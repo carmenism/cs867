@@ -19,6 +19,7 @@ void redraw( void )
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	
+    fv->drawBackground(winWid, winHeight);
 		glColor3f(1.0,1.0,1.0);
 		fv->traceN(100);
 
@@ -88,7 +89,7 @@ int main(int argc, char *argv[])
 	glutPositionWindow(200,100);
 	glutReshapeWindow(int(winWid),int(winHeight));
 
-	glClearColor(0.5,0.5,0.5,1.0);
+	glClearColor(0.0,0.0,0.0,1.0);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();

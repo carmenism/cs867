@@ -43,10 +43,19 @@ void Color::getColorFromVelocity(float velocity, float &r, float &g, float &b) {
 
 // http://stackoverflow.com/questions/180/function-for-creating-color-wheels
 Color *Color::getColorFromHue(float hue) {
-    float saturation = 1.0;
+    float saturation = 0.75;
     float brightness = 0.5;
 
-    return hslToRgb(hue, saturation, brightness);
+    float newHue = 1 - hue;
+
+    newHue = newHue + 0.66;
+
+    if (newHue > 1.0) {
+        newHue = newHue - 1.0;
+    }
+
+
+    return hslToRgb(newHue, saturation, brightness);
 }
 
 // http://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion
