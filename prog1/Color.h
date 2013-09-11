@@ -20,9 +20,9 @@ class Color
 public:
     Color();
     Color( const Color& c );
-    Color( float red, float green, float blue );
+    Color( float red, float green, float blue, float alpha = 1.0 );
 
-    float r, g, b;
+    float r, g, b, a;
 
     static void getColorFromVelocity(float velocity, float &r, float &g, float &b);
     static Color *getColorFromHue(float hue);

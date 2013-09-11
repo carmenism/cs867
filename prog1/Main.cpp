@@ -11,29 +11,36 @@ using namespace std;
 float winWid,winHeight;
 float orthoTop, orthoRight;
 float rx,ry;
+bool showLegend;
 
 float red,green,blue;
 
 flowVis *fv;
 
-void redraw( void )
-{
+void redraw( void ) {
 	glClear(GL_COLOR_BUFFER_BIT);
 	
     fv->drawBackground(orthoRight, orthoTop);
-		glColor3f(1.0,1.0,1.0);
-		fv->traceN(2500);
+	glColor3f(1.0,1.0,1.0);
+	fv->traceN(2500);
+
+    if (showLegend) {
+        fv->drawLegend();
+    }
 
 	glutSwapBuffers();
 }
 
-void rightMenu(int sel)
-{
+void rightMenu(int sel) {
 	switch(sel)
 	{
-	case 1: cerr << "Menu One \n";
+	case 1: cerr << "Show Legend \n";
+        showLegend = true;
+        redraw();
 		break;
-	case 2: cerr << "Menu Two \n";
+	case 2: cerr << "Hide Legend \n";
+        showLegend = false;
+        redraw();
 		break; 
 	case 3: exit(1);
 		break;
@@ -76,6 +83,7 @@ void keyboard(unsigned char key, int x, int y)
 
 int main(int argc, char *argv[])
 {
+    showLegend = false;
 	cerr << "hello world\n";
 	red = green = blue = 1.0;
 
@@ -102,8 +110,8 @@ int main(int argc, char *argv[])
 	glLoadIdentity();
 
 	glutCreateMenu(rightMenu);
-	glutAddMenuEntry("Choice One",1);
-	glutAddMenuEntry("Choice Two",2);
+	glutAddMenuEntry("Show Legend",1);
+	glutAddMenuEntry("Hide Legend",2);
 	glutAddMenuEntry("Quit",3);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 

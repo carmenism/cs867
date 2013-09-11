@@ -19,17 +19,19 @@ Color::Color() {
     r = g = b = 0.0f;
 }
 
-Color::Color( float red, float green, float blue ) {
+Color::Color( float red, float green, float blue, float alpha ) {
     // Should check that values are in the range [0,1]
     r = red;
     g = green;
     b = blue;
+    a = alpha;
 }
 
 Color::Color( const Color& col ) {
     r = col.r;
     g = col.g;
     b = col.b;
+    a = col.a;
 }
 
 void Color::getColorFromVelocity(float velocity, float &r, float &g, float &b) {
