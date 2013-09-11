@@ -1,3 +1,5 @@
+class Color;
+
 class flowVis
 {
 public:

@@ -97,37 +97,30 @@ void flowVis::drawBackground(float orthoRight, float orthoTop) {
 
             float speed = sqrt(dx * dx + dy * dy);
 
-            float interval = (maxSpeed - minSpeed) / 8;
+            float interval = (maxSpeed - minSpeed) / 9;
 
-            /*float minSpeed = 0.5;
-            float maxSpeed = 18;*/
-            /*if (speed < minSpeed) {
-                glColor4f(0, 0, 0, 1); //black
-            } else {
-                float r, g, b;
-                Color::getColorFromVelocity((speed - minSpeed) / maxSpeed, r, g, b);
-                glColor4f(r, g, b, 1);
-            }*/
             if (speed < minSpeed + (interval  / 2)) {
                 glColor4f(0, 0, 0, 1); //black
             } else if (speed < minSpeed + interval) {
-                glColor4f(0.007, 0.145, 0.404, 1); //blue
+                glColor4f(0, 0, 0.55, 1); //blue
             } else if (speed < minSpeed + 2 * interval) {
-                glColor4f(0.32, 0.09, 0.61, 1); //purple
+                glColor4f(0, 0.35, 0.35, 1); //teal
             } else if (speed < minSpeed + 3 * interval) {
-                glColor4f(0.592, 0, 0.412, 1); //violet
+                glColor4f(0, 0.55, 0, 1); //green
             } else if (speed < minSpeed + 4 * interval) {
-                glColor4f(0.706, 0.102, 0.102, 1); //red
+                glColor4f(0.4, 0.62, 0, 1); //yellow green
             } else if (speed < minSpeed + 5 * interval) {
-                glColor4f(0.682, 0.318, 0.094, 1); //orange red
+                glColor4f(0.8, 0.68, 0, 1); //yellow
             } else if (speed < minSpeed + 6 * interval) {
-                glColor4f(0.808, 0.494, 0.114, 1); //orange
+                glColor4f(0.8, 0.52, 0, 1); //orange
             } else if (speed < minSpeed + 7 * interval) {
-                glColor4f(0.710, 0.694, 0.335, 1); //yellow
+                glColor4f(0.8, 0.22, 0, 1); //orange red
+            } else if (speed < minSpeed + 8 * interval) {
+                glColor4f(0.62, 0.07, 0.04, 1); //red
             } else {
-                glColor4f(0.64, 0.64, 0.64, 1); //gray
+                glColor4f(0.55, 0.13, 0.32, 1); //violet
             }
-
+         
             float x = i * width;
             float y =  j * height;
             glRectf(x, y, x + width, y + height);
