@@ -5,7 +5,7 @@ public:
 	void load();
 	void traceN(int n);
 	bool getVec(float x, float y, float &dx, float &dy);
-    void drawBackground(float winWidth, float winHeight);
+    void drawBackground(float orthoRight, float orthoTop);
 private:
 	int nRows, nCols;
 	float **u;
@@ -14,5 +14,9 @@ private:
     float age;
     float number;
 
-    void drawTriangle(float rotation, float t);
+    void drawTriangle(float xp, float yp, float dx, float dy);
+
+    float minSpeed, maxSpeed;
+
+    void findMinMaxSpeeds();
 };

@@ -43,8 +43,8 @@ void Color::getColorFromVelocity(float velocity, float &r, float &g, float &b) {
 
 // http://stackoverflow.com/questions/180/function-for-creating-color-wheels
 Color *Color::getColorFromHue(float hue) {
-    float saturation = 0.75;
-    float brightness = 0.5;
+    float saturation = 0.6;
+    float brightness = 0.45;
 
     float newHue = 1 - hue;
 

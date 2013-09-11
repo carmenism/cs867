@@ -9,6 +9,7 @@ using namespace std;
 
 
 float winWid,winHeight;
+float orthoTop, orthoRight;
 float rx,ry;
 
 float red,green,blue;
@@ -19,9 +20,9 @@ void redraw( void )
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-    fv->drawBackground(winWid, winHeight);
+    fv->drawBackground(orthoRight, orthoTop);
 		glColor3f(1.0,1.0,1.0);
-		fv->traceN(100);
+		fv->traceN(2500);
 
 	glutSwapBuffers();
 }
@@ -82,6 +83,8 @@ int main(int argc, char *argv[])
 
 	winWid = 800.0;
 	winHeight = 600.0;
+    orthoTop = 428;
+    orthoRight = 614;
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
@@ -93,7 +96,7 @@ int main(int argc, char *argv[])
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0.0,614,0.0,428, -100.0, 100.0); // centimeters
+	glOrtho(0.0,orthoRight,0.0,orthoTop, -100.0, 100.0); // centimeters
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
