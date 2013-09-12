@@ -13,30 +13,101 @@ using namespace std;
 flowVis::flowVis() {
     age = 500;
 
-    colors = new vector<Color *>();
+    rainbow = new vector<Color *>();
 
-    colors->push_back(new Color(0, 0, 0, 1));          //black
-    colors->push_back(new Color(0, 0, 0.55, 1));       //blue
-    colors->push_back(new Color(0, 0.35, 0.35, 1));    //teal
-    colors->push_back(new Color(0, 0.55, 0, 1));       //green
-    colors->push_back(new Color(0.4, 0.62, 0, 1));     //yellow-green
-    colors->push_back(new Color(0.8, 0.68, 0, 1));     //yellow
-    colors->push_back(new Color(0.8, 0.52, 0, 1));     //orange
-    colors->push_back(new Color(0.8, 0.22, 0, 1));     //red-orange
-    colors->push_back(new Color(0.62, 0.07, 0.04, 1)); //red
-    colors->push_back(new Color(0.55, 0.13, 0.32, 1)); //violet
+    rainbow->push_back(new Color(0, 0, 0, 1));          //black
+    rainbow->push_back(new Color(0, 0, 0.55, 1));       //blue
+    rainbow->push_back(new Color(0, 0.35, 0.35, 1));    //teal
+    rainbow->push_back(new Color(0, 0.55, 0, 1));       //green
+    rainbow->push_back(new Color(0.4, 0.62, 0, 1));     //yellow-green
+    rainbow->push_back(new Color(0.8, 0.68, 0, 1));     //yellow
+    rainbow->push_back(new Color(0.8, 0.52, 0, 1));     //orange
+    rainbow->push_back(new Color(0.8, 0.22, 0, 1));     //red-orange
+    rainbow->push_back(new Color(0.62, 0.07, 0.04, 1)); //red
+    rainbow->push_back(new Color(0.55, 0.13, 0.32, 1)); //violet
+
+    blueToYellow = new vector<Color *>();
+
+    blueToYellow->push_back(new Color(0.16, 0.19, 0.52, 1));//purple
+    blueToYellow->push_back(new Color(0, 0.31, 0.73, 1));//blue
+    blueToYellow->push_back(new Color(0, 0.47, 0.82, 1)); 
+    blueToYellow->push_back(new Color(0, 0.63, 0.91, 1));  
+    blueToYellow->push_back(new Color(0, 0.62, 0.59, 1));
+    blueToYellow->push_back(new Color(0, 0.6, 0.27, 1));
+    blueToYellow->push_back(new Color(0.44, 0.73, 0.17, 1));
+    blueToYellow->push_back(new Color(0.77, 0.84, 0, 1));
+    blueToYellow->push_back(new Color(1.0, 0.95, 0, 1));//yellow
+
+    blackToWhite = new vector<Color *>();
+
+    blackToWhite->push_back(new Color(0, 0, 0, 1)); //black
+    blackToWhite->push_back(new Color(0.25, 0.25, 0.25, 1));
+    blackToWhite->push_back(new Color(0.38, 0.38, 0.38, 1));
+    blackToWhite->push_back(new Color(0.5, 0.5, 0.5, 1));
+    blackToWhite->push_back(new Color(0.62, 0.62, 0.62, 1));
+    blackToWhite->push_back(new Color(0.75, 0.75, 0.75, 1));
+    blackToWhite->push_back(new Color(0.88, 0.88, 0.88, 1)); 
+    blackToWhite->push_back(new Color(1, 1, 1, 1)); //white
+
+    white = new Color(1, 1, 1, 1);
+    black = new Color(0, 0, 0, 1);
+    red = new Color(1, 0, 0, 1);
+
+    colors = blueToYellow;
+    arrowColor = black;
 
 	load();
 }
 
 flowVis::~flowVis() {
-    while (!colors->empty()) {
-        Color *c = colors->back();
-        colors->pop_back();
+    while (!rainbow->empty()) {
+        Color *c = rainbow->back();
+        rainbow->pop_back();
         delete c;
     }
-
+    while (!blackToWhite->empty()) {
+        Color *c = blackToWhite->back();
+        blackToWhite->pop_back();
+        delete c;
+    }
+    while (!blueToYellow->empty()) {
+        Color *c = blueToYellow->back();
+        blueToYellow->pop_back();
+        delete c;
+    }
+    delete rainbow;
+    delete blueToYellow;
+    delete blackToWhite;
     delete colors;
+    delete black;
+    delete white;
+    delete red;
+    delete arrowColor;
+}
+
+
+void flowVis::useRainbow() {
+    colors = rainbow;
+}
+
+void flowVis::useBlueToYellow() {
+    colors = blueToYellow;
+}
+
+void flowVis::useBlackToWhite() {
+    colors = blackToWhite;
+}
+
+void flowVis::useWhiteArrow() {
+    arrowColor = white;
+}
+
+void flowVis::useBlackArrow() {
+    arrowColor = black;
+}
+
+void flowVis::useRedArrow() {
+    arrowColor = red;
 }
 
 void flowVis::load() {
@@ -219,14 +290,14 @@ void flowVis::traceN(int number)
     float thicknessEnd = 4.0;
     float thicknessDelta = (thicknessEnd - thicknessStart) / age;
 
-    float alphaStart = 0.05;
-    float alphaEnd = 0.65;
+    float alphaStart = 0.02;
+    float alphaEnd = 0.45;
     float alphaDelta = (alphaEnd - alphaStart) / age;
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glColor4f(1, 1, 1, 1);
+    glColor4f(arrowColor->r, arrowColor->g, arrowColor->b, arrowColor->a);
 
 	for (int i = 0; i < number; i++) {
 		xp = rand() % nCols;
@@ -248,8 +319,8 @@ void flowVis::traceN(int number)
 
             if (lastXp != -1 && lastYp != -1) {   
                 glLineWidth(t);
-                glBegin(GL_LINE_STRIP);                
-                    glColor4f(1, 1, 1, alpha);
+                glBegin(GL_LINE_STRIP);         
+                    glColor4f(arrowColor->r, arrowColor->g, arrowColor->b, alpha);
                     glVertex2f(lastXp, lastYp);                    
                     glVertex2f(xp, yp);
                 glEnd();

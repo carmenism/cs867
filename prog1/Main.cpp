@@ -42,7 +42,31 @@ void rightMenu(int sel) {
         showLegend = false;
         redraw();
 		break; 
-	case 3: exit(1);
+    case 3: cerr << "Rainbow bg \n";
+        fv->useRainbow();
+        redraw();
+        break;
+    case 4: cerr << "Blue to yellow bg \n";
+        fv->useBlueToYellow();
+        redraw();
+        break;
+    case 5: cerr << "Black to white bg \n";
+        fv->useBlackToWhite();
+        redraw();
+        break;
+    case 6: cerr << "White arrows \n";
+        fv->useWhiteArrow();
+        redraw();
+        break;
+    case 7: cerr << "Black arrows \n";
+        fv->useBlackArrow();
+        redraw();
+        break;
+    case 8: cerr << "Red arrows \n";
+        fv->useRedArrow();
+        redraw();
+        break;
+	case 9: exit(1);
 		break;
 	}
 }
@@ -110,9 +134,15 @@ int main(int argc, char *argv[])
 	glLoadIdentity();
 
 	glutCreateMenu(rightMenu);
-	glutAddMenuEntry("Show Legend",1);
-	glutAddMenuEntry("Hide Legend",2);
-	glutAddMenuEntry("Quit",3);
+    glutAddMenuEntry("Legend: Show",1);
+    glutAddMenuEntry("Legend: Hide",2);
+    glutAddMenuEntry("Background: Rainbow",3);
+    glutAddMenuEntry("Background: Blue to Yellow",4);
+    glutAddMenuEntry("Background: Black to White",5);
+    glutAddMenuEntry("Arrows: White",6);
+    glutAddMenuEntry("Arrows: Black",7);
+    glutAddMenuEntry("Arrows: Red",8);
+	glutAddMenuEntry("Quit",9);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	glutDisplayFunc(redraw);

@@ -12,6 +12,13 @@ public:
 	bool getVec(float x, float y, float &dx, float &dy);
     void drawBackground(float orthoRight, float orthoTop);
     void drawLegend();
+ 
+    void useRainbow();
+    void useBlueToYellow();
+    void useBlackToWhite();
+    void useWhiteArrow();
+    void useBlackArrow();
+    void useRedArrow();
 private:
 	int nRows, nCols;
 	float **u;
@@ -23,6 +30,15 @@ private:
     float minSpeed, maxSpeed, interval;
 
     std::vector<Color *> * colors;
+    
+    std::vector<Color *> * rainbow;    
+    std::vector<Color *> * blueToYellow;
+    std::vector<Color *> * blackToWhite;
+
+    Color *arrowColor;
+    Color *white;
+    Color *black;
+    Color *red;
 
     void findMinMaxSpeeds();
     void drawTriangle(float xp, float yp, float dx, float dy);
