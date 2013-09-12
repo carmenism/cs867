@@ -180,11 +180,11 @@ void flowVis::findMinMaxSpeeds() {
 
     cerr << "Min: " << minSpeed << "\n";
     cerr << "Max: " << maxSpeed << "\n";
-    interval = (maxSpeed - minSpeed) / (colors->size() - 1);
 }
 
 void flowVis::drawBackground(float orthoRight, float orthoTop) {
     glPolygonMode(GL_FRONT, GL_FILL);
+    float interval = (maxSpeed - minSpeed) / (colors->size() - 1);
 
     float width = orthoRight / nCols;
     float height = orthoTop / nRows;
@@ -217,19 +217,34 @@ void flowVis::drawBackground(float orthoRight, float orthoTop) {
 }
 
 void flowVis::drawLegend() {
-    glPushMatrix();
-    glTranslatef(10, 5, 0);
     if (colors->empty()) {
         return;
     }
 
+    float titleWidth = PrintText::strokeWidth("Speed", 8);
+    float interval = (maxSpeed - minSpeed) / (colors->size() - 1);
+    
     float width = 34;
     float height = 10;
     float fontHeight = 10;
-    
+    float spacing = 5;
+
+    float boxX = -2 * spacing - titleWidth;
+    float boxY = -spacing;
+    float boxWidth = 4 * spacing + titleWidth + width * (colors->size() - 1);
+    float boxHeight = 3 * spacing + fontHeight + height;
+
+    glPushMatrix();
+    glTranslatef(-boxX, -boxY, 0);
+
     glPolygonMode(GL_FRONT, GL_FILL);
     glColor4f(0, 0, 0, 1);
-    glRectf(-10, -5, width * (colors->size() - 1) + 10, height + 5 + fontHeight + 5);
+    glRectf(boxX, boxY, boxX + boxWidth, boxY + boxHeight);  
+
+    glPolygonMode(GL_FRONT, GL_LINE);  
+    glLineWidth(1.0);
+    glColor4f(1,1,1,1);
+    PrintText::drawStrokeText("Speed", -spacing, 0, 8, HORIZ_RIGHT, VERT_BOTTOM);
 
     Color *c = colors->at(0);
     drawLegendBox(0, 0, width / 2, height, c);

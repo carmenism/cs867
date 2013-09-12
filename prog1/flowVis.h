@@ -27,7 +27,7 @@ private:
     float age;
     float number;
 
-    float minSpeed, maxSpeed, interval;
+    float minSpeed, maxSpeed;
 
     std::vector<Color *> * colors;
     
