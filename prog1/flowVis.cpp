@@ -63,8 +63,8 @@ flowVis::flowVis() {
     black = new Color(0, 0, 0, 1);
     red = new Color(1, 0, 0, 1);
 
-    colors = blueToYellow;
-    arrowColor = black;
+    colors = blackToWhite;
+    arrowColor = red;
 
     load();
 }
