@@ -3,10 +3,10 @@
  *  the float version, but it could be extended if it ever proved useful to be
  *  more generic.  It supports rgb and rgba.
  *
- * @author Carmen St. Jean (crr8, carmen@cs.unh.edu)
+ * @author Carmen St. Jean (crr8)
  *         Based on Color.cpp by Dan Bergeron.
  *
- * UNH CS 870, fall 2012
+ * UNH CS 867, fall 2013
  *
  * History:
  *  10/07/2012: Modified slightly to incorporate into homework assignment.
