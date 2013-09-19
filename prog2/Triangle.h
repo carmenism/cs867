@@ -8,6 +8,9 @@ class Triangle: public Symbol
 public:
    Triangle();
    virtual ~Triangle();
+   void drawFillAtOrigin();
+   void drawOutlineAtOrigin();
+private:
    void drawAtOrigin();
 };
 

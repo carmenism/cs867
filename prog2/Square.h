@@ -8,6 +8,9 @@ class Square: public Symbol
 public:
    Square();
    virtual ~Square();
+   void drawFillAtOrigin();
+   void drawOutlineAtOrigin();
+private:
    void drawAtOrigin();
 };
 

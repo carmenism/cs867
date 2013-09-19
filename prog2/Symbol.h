@@ -40,7 +40,8 @@ public:
 
    void draw();//float x, float y);   
    
-   virtual void drawAtOrigin() = 0; // to be overwritten
+   virtual void drawFillAtOrigin() = 0; // to be overwritten   
+   virtual void drawOutlineAtOrigin() = 0; // to be overwritten
 protected: 
    //float x, y;
    float width, height;          // size of the object

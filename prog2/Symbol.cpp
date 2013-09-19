@@ -37,7 +37,7 @@ void Symbol::draw() {//float x, float y) {
             glColor4f( fillColor->r, fillColor->g, fillColor->b, fillColor->a );
 
             glBegin( GL_POLYGON );
-                drawAtOrigin();
+                drawFillAtOrigin();
             glEnd();
         }
 
@@ -48,7 +48,7 @@ void Symbol::draw() {//float x, float y) {
             glLineWidth(borderWidth);
             
             glBegin(GL_LINE_LOOP);//glBegin(GL_POLYGON);
-                drawAtOrigin();
+                drawOutlineAtOrigin();
             glEnd();
 
             glLineWidth(1);

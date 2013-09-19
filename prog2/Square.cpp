@@ -8,6 +8,14 @@ Square::Square() {
 Square::~Square() {
 }
 
+void Square::drawFillAtOrigin() {
+    drawAtOrigin();
+}
+
+void Square::drawOutlineAtOrigin() {
+    drawAtOrigin();
+}
+
 void Square::drawAtOrigin() {
     float sideLength = 1.0;
 

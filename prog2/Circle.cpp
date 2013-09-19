@@ -13,6 +13,14 @@ Circle::~Circle()
 {
 }
 
+void Circle::drawFillAtOrigin() {
+    drawAtOrigin();
+}
+
+void Circle::drawOutlineAtOrigin() {
+    drawAtOrigin();
+}
+
 void Circle::drawAtOrigin() {
     float r = 0.5;
     float num_segments = 72.0;

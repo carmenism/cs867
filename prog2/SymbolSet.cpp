@@ -7,6 +7,9 @@
 #include "Triangle.h"
 #include "Square.h"
 #include "PrintText.h"
+#include "PlusSign.h"
+#include "Heart.h"
+#include "Star.h"
 
 #define NUM_TRIALS 30
 #define NUM_TARGETS 10
@@ -22,38 +25,44 @@ SymbolSet::SymbolSet()
 }
 
 void SymbolSet::initSymbols() {
-    Circle *c0 = new Circle();
-    symbols.push_back(c0);
-
+    Square *s0 = new Square();
+    s0->setFillColor(0.85, 0, 0);
+    symbols.push_back(s0);
+    
     Square *s1 = new Square();
-    s1->setFillColor(0.85, 0, 0);
+    s1->setSize(0.5 / sqrt(2.0), 0.5 / sqrt(2.0));
+    s1->setRotation(45);
+    s1->setFillColor(0, 0.5, 0);
     symbols.push_back(s1);
 
     Triangle *t2 = new Triangle();
-    t2->setFillColor(0.93, 0.6, 0);
+    t2->setFillColor(0, 0, 0.93);
     symbols.push_back(t2);
+
+    Triangle *t3 = new Triangle();
+    t3->setFillColor(0.93, 0.6, 0);
+    t3->setRotation(180);
+    symbols.push_back(t3);
     
-    Circle *c3 = new Circle();
-    c3->setFillColor(0.93, 0.93, 0);
-    symbols.push_back(c3);
+    Circle *c4 = new Circle();
+    c4->setFillColor(0.93, 0.93, 0);
+    symbols.push_back(c4);
 
-    Square *s4 = new Square();
-    s4->setFillColor(0, 0.5, 0);
-    symbols.push_back(s4);
-
-    Triangle *t5 = new Triangle();
-    t5->setFillColor(0, 0, 0.93);
-    symbols.push_back(t5);
+    PlusSign *ps5 = new PlusSign();
+    symbols.push_back(ps5);
     
-    Circle *c6 = new Circle();
-    c6->setFillColor(0.33, 0.1, 0.55);
-    symbols.push_back(c6);
+    PlusSign *ps6 = new PlusSign();
+    ps6->setRotation(45);
+    ps6->setSize(0.5 / sqrt(2.0), 0.5 / sqrt(2.0));
+    ps6->setFillColor(0.33, 0.1, 0.55);
+    symbols.push_back(ps6);
 
-    Square *s7 = new Square();
-    s7->setFillColor(0.96, 0.66, 0.71);
-    symbols.push_back(s7);
+    Heart *h7 = new Heart();
+    h7->setFillColor(0.96, 0.66, 0.71);
+    //h7->setSize(0.45, 0.45);
+    symbols.push_back(h7);
 
-    Triangle *t8 = new Triangle();
+    Star *t8 = new Star();
     t8->setFillColor(0.64, 0.74, 0.07);
     symbols.push_back(t8);
     
