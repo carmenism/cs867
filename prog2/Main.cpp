@@ -23,13 +23,11 @@ float rx,ry;
 float px, py;
 float dx,dy;
 
-int counter;
-
 SymbolSet *symbSet;
 Stopwatch *stopwatch;
 // designed as an introductin to glut
 
-void writeRecord(int targetIndex, bool present, bool correctAnswer, float time) {
+void writeRecord(int targetIndex, bool present, bool correctAnswer, double time) {
     outFile << targetIndex << ", ";
 
     if (present) {
@@ -81,8 +79,7 @@ void redraw( void )
     glPolygonMode( GL_FRONT, GL_FILL );    
 	glRectf(12.0,5.0,22.0,15.0); 
 
-		symbSet->draw();
-		++counter;
+	symbSet->draw();
 
 	rand();
 
@@ -124,7 +121,6 @@ void mousebutton(int button, int state, int x, int y)
 void keyboard(unsigned char key, int x, int y) 
 // x and y givethe mouse pos
 {
-	int i;
 	switch(key)
 	{
 		case 'v': 
@@ -133,6 +129,10 @@ void keyboard(unsigned char key, int x, int y)
         // should go to file
         bool present = symbSet->getTargetPresence();
         double time = stopwatch->stop();
+
+        if (time < 0) {
+            cerr << time <<"\n";
+        }
 
 		if (key == 'v') {
             writeRecord(symbSet->getTargetIndex(), present, present == false, time); 
@@ -151,7 +151,7 @@ void keyboard(unsigned char key, int x, int y)
             exit(0);
         }
 
-		for(i=0;i<600;++i) // blank for one second
+		for(int i=0;i<1000;++i) // blank for one second
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
 			glutSwapBuffers();
@@ -161,8 +161,6 @@ void keyboard(unsigned char key, int x, int y)
 		
 		//symbSet->init();
 		redraw();
-
-		counter = 0;
 		break;
 	}
 }
@@ -176,9 +174,7 @@ int main(int argc, char *argv[])
     
     outFile.open("outputResults.csv");
 
-	counter = 0;
-
-	px=py = 200.0;
+    px=py = 200.0;
 
 	dx = 2.5;dy = 1.5;
 

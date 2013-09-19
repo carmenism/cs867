@@ -5,40 +5,31 @@ Stopwatch::Stopwatch()
 	state = NotStarted;
 }
 
-double Stopwatch::getCurrentTime() {
+WORD Stopwatch::getCurrentTime() {
     SYSTEMTIME time;
     GetSystemTime(&time);
-    WORD millis = (time.wDay * 24 * 60 * 60 * 1000)
-        + (time.wHour * 60 * 60 * 1000) 
-        + (time.wMinute * 60 * 1000) 
-        + (time.wSecond * 1000) 
+    WORD millis = (time.wHour * 60 * 60 * 1000) // 60min/hour 60s/min 1000ms/s
+        + (time.wMinute * 60 * 1000) // 60s/min 1000ms/s
+        + (time.wSecond * 1000) // 1000ms/s
         + time.wMilliseconds;
 
-    return ((int) millis / 1000.0);
+    return millis;
 }
 
-void Stopwatch::start()
-{
+void Stopwatch::start() {
 	state = Started;
     startTime = getCurrentTime();
 }
 
-double Stopwatch::read()
-{
-    if (state == Started) {
-        return getCurrentTime() - startTime;
-    }
-
-	return -1;
-}
-
-double Stopwatch::stop()
-{
+double Stopwatch::stop() {
     double retval = -1;
 
     if (state == Started) {
-        retval = getCurrentTime() - startTime;    
-    }
+        WORD currentTime = getCurrentTime();
+        WORD diff = currentTime - startTime;    
+
+        retval = ((double) diff) / 1000.0;
+    } 
 
 	state = Stopped;
 

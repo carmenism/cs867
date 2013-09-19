@@ -12,12 +12,11 @@ class Stopwatch
 		Stopwatch();
 
 		void start();
-		double read();
 		double stop();
 	protected:
-		double startTime;
+		WORD startTime;
 		State state;
-		double getCurrentTime();
+		WORD getCurrentTime();
 };
 
 #endif
