@@ -196,7 +196,7 @@ int main(int argc, char *argv[])
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0.0,32.4,0.0,21.0, -100.0, 100.0); // size in cm.
+	glOrtho(0.0,30.5,0.0,20.3, -100.0, 100.0); // size in cm.
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

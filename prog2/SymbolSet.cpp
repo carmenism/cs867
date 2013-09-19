@@ -37,11 +37,13 @@ void SymbolSet::initSymbols() {
 
     Triangle *t2 = new Triangle();
     t2->setFillColor(0, 0, 0.93);
+    t2->setSize(0.4, 0.4);
     symbols.push_back(t2);
 
     Triangle *t3 = new Triangle();
     t3->setFillColor(0.93, 0.6, 0);
     t3->setRotation(180);
+    t3->setSize(0.4, 0.4);
     symbols.push_back(t3);
     
     Circle *c4 = new Circle();
@@ -49,6 +51,7 @@ void SymbolSet::initSymbols() {
     symbols.push_back(c4);
 
     PlusSign *ps5 = new PlusSign();
+    ps5->setSize(0.45, 0.45);
     symbols.push_back(ps5);
     
     PlusSign *ps6 = new PlusSign();
@@ -194,7 +197,10 @@ void SymbolSet::draw()
 
     glColor4f(0,0,0,1);
     PrintText::drawStrokeText("Target Symbol", 6, 12, 0.5, HORIZ_CENTER);
+    
+    PrintText::drawStrokeText("V - NO",  12, 3, 0.5, HORIZ_CENTER);
+    PrintText::drawStrokeText("M - YES", 22, 3, 0.5, HORIZ_CENTER);
 
-    PrintText::drawStrokeText(toStr((trialNumber / NUM_TRIALS) + 1) + "/10 Targets", 1, 2, 0.5);
-    PrintText::drawStrokeText(toStr((trialNumber % NUM_TRIALS) + 1) + "/30 Trials", 1, 1, 0.5);
+    PrintText::drawStrokeText(toStr((trialNumber / NUM_TRIALS) + 1) + "/10 Targets", 0.5, 0.6, 0.35);
+    PrintText::drawStrokeText(toStr((trialNumber % NUM_TRIALS) + 1) + "/30 Trials", 0.5, 0.1, 0.35);
 }
