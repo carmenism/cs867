@@ -50,7 +50,7 @@ void Heart::drawFillAtOrigin() {
 
 void Heart::drawLineArc(float cenX, float cenY, float radius, float startAngle, float arcAngle) {
     //glEnable(GL_POLYGON_SMOOTH);
-    float num_segments = 180.0;
+    float num_segments = 72.0;
 
     float theta = arcAngle / num_segments; 
     float tangetial_factor = tanf(theta);//calculate the tangential factor 

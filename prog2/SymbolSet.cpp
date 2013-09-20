@@ -36,7 +36,7 @@ void SymbolSet::initSymbols() {
     symbols.push_back(s1);
 
     Triangle *t2 = new Triangle();
-    t2->setFillColor(0, 0, 0.93);
+    t2->setFillColor(0.3, 0.5, 1);
     t2->setSize(0.4, 0.4);
     symbols.push_back(t2);
 
@@ -57,7 +57,7 @@ void SymbolSet::initSymbols() {
     PlusSign *ps6 = new PlusSign();
     ps6->setRotation(45);
     ps6->setSize(0.5 / sqrt(2.0), 0.5 / sqrt(2.0));
-    ps6->setFillColor(0.33, 0.1, 0.55);
+    ps6->setFillColor(0.45, 0.125, 0.65);
     symbols.push_back(ps6);
 
     Heart *h7 = new Heart();
@@ -66,7 +66,7 @@ void SymbolSet::initSymbols() {
     symbols.push_back(h7);
 
     Star *t8 = new Star();
-    t8->setFillColor(0.64, 0.74, 0.07);
+    t8->setFillColor(0.75, 0.9, 0.12);
     symbols.push_back(t8);
     
     Circle *c9 = new Circle();
