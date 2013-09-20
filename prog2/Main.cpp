@@ -12,6 +12,7 @@
 #include <fstream>
 #include "SymbolSet.h"
 #include "Stopwatch.h"
+#include "PrintText.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ float dx,dy;
 
 SymbolSet *symbSet;
 Stopwatch *stopwatch;
+bool experimentStarted;
 // designed as an introductin to glut
 
 void writeRecord(int targetIndex, bool present, bool correctAnswer, double time) {
@@ -77,9 +79,18 @@ void redraw( void )
 	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3f(1.0,1.0,1.0);
     glPolygonMode( GL_FRONT, GL_FILL );    
-	glRectf(12.0,5.0,22.0,15.0); 
 
-	symbSet->draw();
+    if (experimentStarted) {
+        glRectf(12.0,5.0,22.0,15.0); 
+	    symbSet->draw();
+    } else {
+        glColor3f(0, 0, 0);
+        PrintText::drawStrokeText("Press space to begin.", 17, 10, 1, HORIZ_CENTER);
+    }
+
+    glColor3f(0, 0, 0);
+    PrintText::drawStrokeText("V - NO",  12, 3, 0.5, HORIZ_CENTER);
+    PrintText::drawStrokeText("M - YES", 22, 3, 0.5, HORIZ_CENTER);
 
 	rand();
 
@@ -123,16 +134,19 @@ void keyboard(unsigned char key, int x, int y)
 {
 	switch(key)
 	{
+        case ' ':
+            if (!experimentStarted) {
+                experimentStarted = true;
+                stopwatch->start();
+                redraw();
+            }
+            break;
 		case 'v': 
 		case 'm': 
         
         // should go to file
         bool present = symbSet->getTargetPresence();
         double time = stopwatch->stop();
-
-        if (time < 0) {
-            cerr << time <<"\n";
-        }
 
 		if (key == 'v') {
             writeRecord(symbSet->getTargetIndex(), present, present == false, time); 
@@ -159,7 +173,6 @@ void keyboard(unsigned char key, int x, int y)
 
         stopwatch->start();
 		
-		//symbSet->init();
 		redraw();
 		break;
 	}
@@ -167,6 +180,7 @@ void keyboard(unsigned char key, int x, int y)
 
 int main(int argc, char *argv[])
 {
+    experimentStarted = false;
 	cerr << "hello world\n";
 
     stopwatch = new Stopwatch();
@@ -208,8 +222,6 @@ int main(int argc, char *argv[])
 	glutMotionFunc( motion);	
 	glutMouseFunc( mousebutton);
 	glutKeyboardFunc( keyboard );
-
-    stopwatch->start();
 
 	glutMainLoop();
 

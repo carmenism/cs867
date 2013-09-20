@@ -198,9 +198,6 @@ void SymbolSet::draw()
     glColor4f(0,0,0,1);
     PrintText::drawStrokeText("Target Symbol", 6, 12, 0.5, HORIZ_CENTER);
     
-    PrintText::drawStrokeText("V - NO",  12, 3, 0.5, HORIZ_CENTER);
-    PrintText::drawStrokeText("M - YES", 22, 3, 0.5, HORIZ_CENTER);
-
     PrintText::drawStrokeText(toStr((trialNumber / NUM_TRIALS) + 1) + "/10 Targets", 0.5, 0.6, 0.35);
     PrintText::drawStrokeText(toStr((trialNumber % NUM_TRIALS) + 1) + "/30 Trials", 0.5, 0.1, 0.35);
 }
