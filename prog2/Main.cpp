@@ -165,7 +165,7 @@ void keyboard(unsigned char key, int x, int y)
             exit(0);
         }
 
-		for(int i=0;i<60;++i) // blank for one second
+		for(int i=0;i<100;++i) // blank for one second
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
 			glutSwapBuffers();
