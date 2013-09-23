@@ -4,6 +4,7 @@
 #include "SymbolSet.h"
 #include "Symbol.h"
 #include "Circle.h"
+#include "CirclePair.h"
 #include "Triangle.h"
 #include "Square.h"
 #include "PrintText.h"
@@ -52,6 +53,7 @@ void SymbolSet::initSymbols() {
 
     PlusSign *ps5 = new PlusSign();
     ps5->setSize(0.45, 0.45);
+    ps5->setFillColor(0.75, 0.75, 0.75);
     symbols.push_back(ps5);
     
     PlusSign *ps6 = new PlusSign();
@@ -66,10 +68,10 @@ void SymbolSet::initSymbols() {
     symbols.push_back(h7);
 
     Star *t8 = new Star();
-    t8->setFillColor(0.75, 0.9, 0.12);
+    t8->setFillColor(0.25, 0.99, 0.01);
     symbols.push_back(t8);
     
-    Circle *c9 = new Circle();
+    CirclePair *c9 = new CirclePair();
     c9->setFillColor(0, 0, 0);
     symbols.push_back(c9);
 }

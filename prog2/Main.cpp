@@ -10,6 +10,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <fstream>
+#include <time.h>
 #include "SymbolSet.h"
 #include "Stopwatch.h"
 #include "PrintText.h"
@@ -180,6 +181,8 @@ void keyboard(unsigned char key, int x, int y)
 
 int main(int argc, char *argv[])
 {
+    srand (time(NULL));
+
     experimentStarted = false;
 	cerr << "hello world\n";
 
