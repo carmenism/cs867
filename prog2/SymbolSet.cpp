@@ -33,16 +33,16 @@ void SymbolSet::initSymbols() {
     Square *s1 = new Square();
     s1->setSize(0.5 / sqrt(2.0), 0.5 / sqrt(2.0));
     s1->setRotation(45);
-    s1->setFillColor(0, 0.5, 0);
+    s1->setFillColor(0.25, 0.99, 0.01);
     symbols.push_back(s1);
 
     Triangle *t2 = new Triangle();
-    t2->setFillColor(0.3, 0.5, 1);
+    t2->setFillColor(0.25, 0.40, 1);
     t2->setSize(0.4, 0.4);
     symbols.push_back(t2);
 
     Triangle *t3 = new Triangle();
-    t3->setFillColor(0.93, 0.6, 0);
+    t3->setFillColor(0.95, 0.6, 0);
     t3->setRotation(180);
     t3->setSize(0.4, 0.4);
     symbols.push_back(t3);
@@ -68,7 +68,7 @@ void SymbolSet::initSymbols() {
     symbols.push_back(h7);
 
     Star *t8 = new Star();
-    t8->setFillColor(0.25, 0.99, 0.01);
+    t8->setFillColor(0, 0.5, 0);
     symbols.push_back(t8);
     
     CirclePair *c9 = new CirclePair();

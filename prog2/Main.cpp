@@ -166,7 +166,13 @@ void keyboard(unsigned char key, int x, int y)
             exit(0);
         }
 
-		for(int i=0;i<6000;++i) // blank for one second
+        int pause = 1000;
+        
+        if (symbSet->getTrialNumber() % 30 == 0) {
+            pause = 6000;
+        }
+
+		for(int i=0;i<pause;++i) // blank for one second
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
 			glutSwapBuffers();

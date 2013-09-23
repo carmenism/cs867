@@ -15,6 +15,8 @@ public:
     int getTargetIndex();
     bool advanceTrial();
     bool getTargetPresence();
+
+    int getTrialNumber() { return trialNumber; }
 private:
     std::vector<Symbol *> symbols;
 
@@ -24,7 +26,7 @@ private:
 
     //int targetIndex;
     int trialNumber;
-    
+
     std::vector<bool> targetPresence;
     
     void initSymbols();
