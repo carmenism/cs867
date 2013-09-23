@@ -175,7 +175,7 @@ void SymbolSet::draw()
 
 	glColor3f(0.0,0.0,1.0);
 
-    /*for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
 
         for (int j = 0; j < 10; j++) {
             float x = xPos[i][j];
@@ -199,63 +199,5 @@ void SymbolSet::draw()
     PrintText::drawStrokeText("Target Symbol", 6, 12, 0.5, HORIZ_CENTER);
     
     PrintText::drawStrokeText(toStr((trialNumber / NUM_TRIALS) + 1) + "/10 Targets", 0.5, 0.6, 0.35);
-    PrintText::drawStrokeText(toStr((trialNumber % NUM_TRIALS) + 1) + "/30 Trials", 0.5, 0.1, 0.35);*/
-    glColor4f(0, 0, 0, 1);
-    PrintText::drawStrokeText("< 1.6", 1.5, 1 * 0.75, 0.45, HORIZ_RIGHT, VERT_CENTER);
-    glPushMatrix();
-	    glTranslatef(2, 1 * 0.75, 0);
-        symbols[5]->draw();
-    glPopMatrix();
-
-    glColor4f(0, 0, 0, 1);
-    PrintText::drawStrokeText("< 1.4", 1.5, 2 * 0.75, 0.45, HORIZ_RIGHT, VERT_CENTER);
-    
-
-    glColor4f(0, 0, 0, 1);
-    PrintText::drawStrokeText("< 1.2", 1.5, 3 * 0.75, 0.45, HORIZ_RIGHT, VERT_CENTER);
-    glPushMatrix();
-	    glTranslatef(2, 3 * 0.75, 0);
-        symbols[1]->draw();
-    glPopMatrix();
-    glPushMatrix();
-	    glTranslatef(2 + 1 * 0.75, 3 * 0.75, 0);
-        symbols[6]->draw();
-    glPopMatrix();
-
-    glColor4f(0, 0, 0, 1);
-    PrintText::drawStrokeText("< 1.0", 1.5, 4 * 0.75, 0.45, HORIZ_RIGHT, VERT_CENTER);
-
-    glPushMatrix();
-	    glTranslatef(2 + 2 * 0.75, 4 * 0.75, 0);
-        symbols[9]->draw();
-    glPopMatrix();
-    glPushMatrix();
-	    glTranslatef(2, 4 * 0.75, 0);
-        symbols[3]->draw();
-    glPopMatrix();    
-    glPushMatrix();
-	    glTranslatef(2 + 1 * 0.75, 4 * 0.75, 0);
-        symbols[8]->draw();
-    glPopMatrix();
-
-    glColor4f(0, 0, 0, 1);
-    PrintText::drawStrokeText("< 0.8", 1.5, 5 * 0.75, 0.45, HORIZ_RIGHT, VERT_CENTER);
-    glPushMatrix();
-	    glTranslatef(2, 5 * 0.75, 0);
-        symbols[0]->draw();
-    glPopMatrix();
-    glPushMatrix();
-	    glTranslatef(2 + 1 * 0.75, 5 * 0.75, 0);
-        symbols[2]->draw();
-    glPopMatrix();
-    glPushMatrix();
-	    glTranslatef(2 + 2 * 0.75, 5 * 0.75, 0);
-        symbols[4]->draw();
-    glPopMatrix();
-    glPushMatrix();
-	    glTranslatef(2 + 3 * 0.75, 5 * 0.75, 0);
-        symbols[7]->draw();
-    glPopMatrix();
-
-    glPopMatrix();
+    PrintText::drawStrokeText(toStr((trialNumber % NUM_TRIALS) + 1) + "/30 Trials", 0.5, 0.1, 0.35);
 }
