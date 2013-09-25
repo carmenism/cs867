@@ -18,9 +18,9 @@
 \maketitle
 
 \section{Introduction}
-Designing a symbol set where each symbol is easily findable in a random field of the others can be a difficult task, especially when the symbol set is larger.  Treisman and Gelade found that we visually process certain features -- such as color, orientation, and form -- pre-attentively and in parallel \cite{treisman80}.  They also concluded that more focused attention is needed to distinguish an object on two or more features.  Therefore, we have taken these ideas into consideration while endeavoring to design and evaluate a symbol set with maximum findability.
+Designing a symbol set where each symbol is easily findable in a random field of the others can be a difficult task, especially when the symbol set is larger.  Treisman and Gelade found that we process certain features -- such as color, orientation, and form -- pre-attentively and in parallel \cite{treisman80}.  They also concluded that more focused attention is needed to distinguish an object on two or more features.  Therefore, we have taken these ideas into consideration while endeavoring to design and evaluate a symbol set with maximum findability.
 
-The symbols, seen in Figure~\ref{fig:symbolSet}, used in this experiment were chosen such that each would be distinguishable from the others in the set.  Each symbol was given a unique color that can be reliably named by the average English speaker (e.g., ``red," ``pink," ``lime green"), rather than using colors that may be more ambiguous such as a darker red or a blend of blue.  Each combination of form and orientation is unique; some forms are repeated but with a different orientation.
+In order to take advantage of the pre-attentive processing, the symbols used in this experiment, seen in Figure~\ref{fig:symbolSet}, were given at least one unique feature.  In particular, each symbol has its own distinctive color.  Colors that tend to be easily named (e.g., ``blue," ``pink," ``black") were preferred over colors that may have more ambiguous names (e.g., ``aquamarine," ``teal," ``cerulean").  Each combination of form and orientation is unique; some forms are repeated but with a different orientation.
 
 \begin{figure}[htb]
 \centering
@@ -29,17 +29,18 @@ The symbols, seen in Figure~\ref{fig:symbolSet}, used in this experiment were ch
 	\label{fig:symbolSet}
 \end{figure}
 
-\section{Method}
 
-\begin{wrapfigure}[10]{r}{0.45\textwidth}
+
+\begin{wrapfigure}[6]{r}{0.35\textwidth}
 \centering
-	\includegraphics[width=5cm]{images/example.eps}
+	\includegraphics[width=0.35\textwidth]{images/example.eps}
 	\caption{An example of a trial.}
 	\label{fig:trialExample}
 \end{wrapfigure}
 
-The task of the subject was to indicate whether or not a specified target symbol was present in a jittered grid of 100 symbols.
+\section{Method}
 
+The task of the subject in this experiment was to indicate whether or not a specified target symbol was present in a jittered grid of 100 symbols.
 
 \subsection{Stimuli}
 
@@ -100,9 +101,9 @@ Averages were calculated for each individual target for its 15 Target Trials and
 
 \section{Discussion}
 
-Figure~\ref{fig:averages} emphasizes the effectiveness of different symbols.  Symbols 5 (gray plus-sign), 6 (purple X), and 8 (green star) had high average times, especially for Blank Trials.  This could be because these symbols were easily confused for each other, with each of them having at least four protruding parts.  These colors are also either lower in or completely lacking in saturation, which may have made them stand out less.  The symbols which had the lowest averages were symbols symbols 0 (red square), 1 (green tilted square), and 4 (yellow circle).  These shapes were effective because they are quite simple and, more importantly, these colors are very vivid.
+Figure~\ref{fig:averages} emphasizes the effectiveness of different symbols.  Symbols 5 (gray plus-sign), 6 (purple X), and 8 (green star) seem to be least findable because they had high average times, especially for Blank Trials.  This could be because these symbols were easily confused for each other, with each of them having at least four protruding parts.  These colors are also either lower in or completely lacking in saturation, which may have made them stand out less.  The symbols which had the lowest average times were symbols 0 (red square), 1 (green tilted square), and 4 (yellow circle).  These symbols were most findable perhaps because they are quite simple in form and their colors are very vivid.
 
-\begin{wraptable}[19]{r}{0.33\textwidth}
+\begin{wraptable}[20]{r}{0.33\textwidth}
 	\resizebox{0.33\textwidth}{!}{%
 	\centering
 	\begin{tabular}{| r | r | }
@@ -124,10 +125,16 @@ Figure~\ref{fig:averages} emphasizes the effectiveness of different symbols.  Sy
 	\label{tab:increase}
 \end{wraptable}
 
-Response time averages were significantly larger for Blank Trials than for Target Trials.  This was as expected, as a Target Trial ends as soon as the target is spotted, which may be immediately if the target ``pops out" from the others.  On the other hand, a Blank Trial requires that the subject's eyes look at all 100 symbols before the subject can declare with confidence that the target truly is absent.  However, the average response time increased much more for some targets than others.  Table~\ref{tab:increase} shows that symbols 0 (red square), 1 (green tilted square), and 4 (yellow circle) had relatively low increases from Target Trials to Blank Trials.  A low increase is preferrable, meaning these three symbols were particularly effective.  Symbol 5 (gray plus-sign) had a high increase, meaning this symbol is perhaps less effective.
+Response time averages were significantly larger for Blank Trials than for Target Trials.  This was as expected, as a Target Trial ends as soon as the target is spotted, which may be immediately if the target ``pops out" from the others.  On the other hand, a Blank Trial requires that the subject's eyes look at all 100 symbols before the subject can declare with confidence that the target truly is absent.  However, the average response time increased from Target to Blank trials much more for some targets than others.  In Table~\ref{tab:increase}, we have calculated the percentage increased, as follows, for each target:
+
+\begin{equation*}
+x = \frac{t_{blank} - t_{target}}{t_{target}}
+\end{equation*}
+
+Table~\ref{tab:increase} shows that symbols 0 (red square), 1 (green tilted square), and 4 (yellow circle) had relatively low increases from Target Trials to Blank Trials.  A low increase is preferrable, meaning these three symbols were particularly effective.  Symbol 5 (gray plus-sign) had a high increase, meaning this symbol is perhaps less effective.
 
 
-There were no errors and the average response times -- found to be between 0.5 and 3.5 seconds -- were all reasonably low.  This leads to the conclusion that this symbol set is reasonably effective, however that is not to say there is not room for improvement.  It seems that color was more significant than shape, though more work would have to be done to verify this.  Altering the colors and/or shapes of the more poorly performing symbols -- 5 (gray plus-sign), 6 (purple X), and 8 (green star) -- might be recommended before putting this symbol set into practical use.
+There were no errors and the average response times -- found to be between 0.5 and 3.5 seconds -- were all reasonably low.  This leads to the conclusion that this symbol set is reasonably effective, however that is not to say there is no room for improvement.  It seems that color was more significant than shape, though more work would have to be done to verify this.  Altering the colors and/or shapes of the more poorly performing symbols -- 5 (gray plus-sign), 6 (purple X), and 8 (green star) -- might be recommended before putting this symbol set into practical use.
 
 \bibliographystyle{plain}
 
