@@ -1,0 +1,26 @@
+\documentclass{article} %[letterpaper,11pt]
+%\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+%\usetikzlibrary{shapes,arrows}
+
+\usepackage{amsmath}
+
+\providecommand{\inlinecode}[1]{\texttt{#1}}
+
+\begin{document}
+
+\title{CS 867: Project Proposal}
+\date{October 23, 2013}
+\author{Carmen St.\ Jean}
+
+\maketitle
+
+\vspace{5 mm}
+
+In fields such as ecology, economics, and engineering, data is often time-oriented.  It is not unusual for this data to have multiple series, representing different entities or scenarios, which must be viewed simultaneously in order to be properly compared and evaluated.  However, effective visualization of concurrent time series is actually problematic with the current methods at hand; placing all of the series on a single line chart---one of the most popular approaches---can lead to occlusion problems, while putting each series on its own chart can take up a lot of screen space.
+
+We propose introducing a variation on the traditional line chart where each series is offset slightly in the vertical direction.  Each series will be distinguished by a specific color and texture, with each texture designed to have maximum see-through to allow the other series to be seen.  We hypothesize this will reduce screen space and occlusion without sacrificing perceptibility.  This new design will be evaluated against other common representations such as the traditional line chart in order to understand its effectiveness.  We will ask participants in the evaluation to perform a few simpler tasks, such as find the global maximum of all time series, and at least one trend-based task, such as find the two series which are most similar.
+
+\end{document}
+
