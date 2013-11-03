@@ -16,6 +16,13 @@ public:
     void draw(Chart *chartStyle);
 
     //void draw();
+    float getGlobalMinX() { return globalMinX; }
+    float getGlobalMaxX() { return globalMaxX; }
+
+    int getNumberCharts();
+    float getValue(int chartIndex, int timeIndex);
+    std::vector<float> *getValues(int chartIndex);
+    float getDifferenceForChartBetweenTimes(int chartIndex, int startTime, int endTime);
 private:
     int numberCharts;
     int chartWidth, chartHeight;

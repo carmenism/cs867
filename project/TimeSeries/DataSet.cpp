@@ -18,6 +18,27 @@ DataSet::~DataSet() {
     delete allValues;
 }
 
+int DataSet::getNumberCharts() {
+    return allValues->size();
+}
+
+float DataSet::getValue(int chartIndex, int timeIndex) {
+    return allValues->at(chartIndex)->at(timeIndex);
+}
+
+std::vector<float> *DataSet::getValues(int chartIndex) {
+    return allValues->at(chartIndex);
+}
+
+float DataSet::getDifferenceForChartBetweenTimes(int chartIndex, int startTime, int endTime) {
+    std::vector<float> *chart = allValues->at(chartIndex);
+
+    float valueStart = chart->at(startTime);
+    float valueEnd = chart->at(endTime);
+
+    return (valueEnd - valueStart);
+}
+
 void DataSet::updateValues() {
     clearValues();    
 

@@ -3,6 +3,7 @@
 #include "LineChart.h"
 #include "ChartSet.h"
 #include "DataSet.h"
+#include "DiscriminationTask.h"
 #include <vector>
 #include <iostream>
 #include <GL/glut.h>
@@ -11,6 +12,7 @@ float winWid,winHeight;
 
 DataSet *dataSet = 0;
 ChartSet *chartSet = 0;
+DiscriminationTask *slopeTask = 0;
 
 void InitLighting()
 {
@@ -80,6 +82,9 @@ int main(int argc, char *argv[]) {
     dataSet = new DataSet();
     chartSet = new ChartSet(dataSet);
     chartSet->updateValues();
+
+    slopeTask = new DiscriminationTask(dataSet);
+    slopeTask->configure();
   
 	winWid = 1200.0;
 	winHeight = 800.0;
