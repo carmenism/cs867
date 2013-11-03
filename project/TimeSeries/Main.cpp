@@ -9,11 +9,6 @@
 
 float winWid,winHeight;
 
-/*RandomWalk *rw = 0;
-HorizonGraph *hg = 0;
-LineChart *line = 0;
-std::vector<float> *values = 0;
-float minY, maxY;*/
 DataSet *dataSet = 0;
 ChartSet *chartSet = 0;
 
@@ -53,25 +48,6 @@ void redraw( void )
     if (chartSet != 0) {
         chartSet->draw();
     }
-    /*
-    if (hg != 0) {
-        hg->setWidth(500);
-        hg->setHeight(25);
-        hg->setGlobalMinX(0);
-        hg->setGlobalMaxX(values->size() - 1);
-        hg->setGlobalMinY(minY);
-        hg->setGlobalMaxY(maxY);
-        hg->draw(values, 50, 50);
-    }
-    if (line != 0) {
-        line->setWidth(500);
-        line->setHeight(25);
-        line->setGlobalMinX(0);
-        line->setGlobalMaxX(values->size() - 1);
-        line->setGlobalMinY(minY);
-        line->setGlobalMaxY(maxY);
-        line->draw(values, 50, 100);
-    }*/
 
 	glutSwapBuffers();
 }
@@ -104,74 +80,7 @@ int main(int argc, char *argv[]) {
     dataSet = new DataSet();
     chartSet = new ChartSet(dataSet);
     chartSet->updateValues();
-  /*  rw = new RandomWalk();
-    values = rw->generate(1000, 500);
-    values->clear();
-    values->push_back(1);
-    values->push_back(0);
-    values->push_back(1);
-    values->push_back(2);
-    values->push_back(3);
-    values->push_back(4);
-    values->push_back(3);
-    values->push_back(4);
-    values->push_back(5);
-    values->push_back(6);
-    values->push_back(7);
-    values->push_back(8);
-    values->push_back(9);  // 10
-    values->push_back(10);
-    values->push_back(9);
-    values->push_back(10);
-    values->push_back(9);
-    values->push_back(8);
-    values->push_back(7);
-    values->push_back(6);
-    values->push_back(5);
-    values->push_back(4);
-    values->push_back(3);
-    values->push_back(2);
-    values->push_back(1);
-    values->push_back(0);
-    values->push_back(1); // 20
-    values->push_back(2);
-    values->push_back(3);
-    values->push_back(4);
-    values->push_back(5);
-    values->push_back(6);
-    values->push_back(7);
-    values->push_back(8);
-    values->push_back(9);  
-    values->push_back(8);
-    values->push_back(7);
-    values->push_back(6); // 30
-    values->push_back(5);
-    values->push_back(4);
-    values->push_back(3);
-    values->push_back(2);
-    values->push_back(1);
-    values->push_back(0); // 36
-
-
-    hg = new HorizonGraph();
-    line = new LineChart();
-    
-    minY = 1000;
-    maxY = -1000;
-
-    for (int i = 0; i < values->size(); i++) {
-        float v = values->at(i);
-        std::cout << v << " ";
-
-        if (minY > v) {
-            minY = v;
-        }
-
-        if (maxY < v) {
-            maxY = v;
-        }
-    }*/
-
+  
 	winWid = 1200.0;
 	winHeight = 800.0;
 
@@ -183,10 +92,6 @@ int main(int argc, char *argv[]) {
 
 	glClearColor(0.9,0.9,0.9,1.0);
 	InitLighting();
-
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadIdentity();
-	//glOrtho(0.0,winWid,0.0,winHeight, -1.01, 1.01); // size in cm.
 
     glViewport(0, 0, winWid, winHeight);
     glMatrixMode(GL_PROJECTION);
