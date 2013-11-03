@@ -1,17 +1,21 @@
 #include "RandomWalk.h"
 #include "HorizonGraph.h"
 #include "LineChart.h"
+#include "ChartSet.h"
+#include "DataSet.h"
 #include <vector>
 #include <iostream>
 #include <GL/glut.h>
 
 float winWid,winHeight;
 
-RandomWalk *rw = 0;
+/*RandomWalk *rw = 0;
 HorizonGraph *hg = 0;
 LineChart *line = 0;
 std::vector<float> *values = 0;
-float minY, maxY;
+float minY, maxY;*/
+DataSet *dataSet = 0;
+ChartSet *chartSet = 0;
 
 void InitLighting()
 {
@@ -46,6 +50,10 @@ void redraw( void )
 	glColor3f(1.0,1.0,1.0);
     glPolygonMode( GL_FRONT, GL_FILL );    
    
+    if (chartSet != 0) {
+        chartSet->draw();
+    }
+    /*
     if (hg != 0) {
         hg->setWidth(500);
         hg->setHeight(25);
@@ -63,7 +71,7 @@ void redraw( void )
         line->setGlobalMinY(minY);
         line->setGlobalMaxY(maxY);
         line->draw(values, 50, 100);
-    }
+    }*/
 
 	glutSwapBuffers();
 }
@@ -93,9 +101,12 @@ void keyboard(unsigned char key, int x, int y) {
 }
 
 int main(int argc, char *argv[]) {
-    rw = new RandomWalk();
+    dataSet = new DataSet();
+    chartSet = new ChartSet(dataSet);
+    chartSet->updateValues();
+  /*  rw = new RandomWalk();
     values = rw->generate(1000, 500);
-  /*  values->clear();
+    values->clear();
     values->push_back(1);
     values->push_back(0);
     values->push_back(1);
@@ -139,7 +150,7 @@ int main(int argc, char *argv[]) {
     values->push_back(3);
     values->push_back(2);
     values->push_back(1);
-    values->push_back(0); // 36*/
+    values->push_back(0); // 36
 
 
     hg = new HorizonGraph();
@@ -159,7 +170,7 @@ int main(int argc, char *argv[]) {
         if (maxY < v) {
             maxY = v;
         }
-    }
+    }*/
 
 	winWid = 1200.0;
 	winHeight = 800.0;
