@@ -1,4 +1,5 @@
 #include "Experiment.h"
+#include "Picker.h"
 #include <vector>
 #include <iostream>
 #include <GL/glut.h>
@@ -6,9 +7,9 @@
 float winWid,winHeight;
 
 Experiment *experiment;
+Picker *picker;
 
-void InitLighting()
-{
+void InitLighting() {
 	float light_position[] = {20.0,20.0,-40.0,0.0};
 	glLightfv(GL_LIGHT0,GL_POSITION, light_position);
 	float ambient[] = { 0.1f, 0.1f, 0.1f, 1.0f };
@@ -31,7 +32,6 @@ void InitLighting()
 	//glShadeModel(GL_FLAT);
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_COLOR_MATERIAL);
-
 }
 
 void redraw( void )
@@ -48,6 +48,8 @@ void redraw( void )
 }
 
 void reshape(int w, int h) {
+    winWid = w;
+    winHeight = h;
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -58,25 +60,28 @@ void reshape(int w, int h) {
 
 void motion(int x, int y) {
     // called when a mouse is in motion with a button down
-
 }
 
 
 void mousebutton(int button, int state, int x, int y) {
-
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+        int i = picker->pick(x, winHeight - y);
+        std::cout << i << "\n";
+    }
 }
 
 void keyboard(unsigned char key, int x, int y) {
-    // x and y givethe mouse pos
-	
+    	
 }
 
 int main(int argc, char *argv[]) {
     experiment = new Experiment();
     experiment->startTrial();
+
+    picker = new Picker(experiment);
   
-	winWid = 1200.0;
-	winHeight = 800.0;
+	winWid = 800.0;
+	winHeight = 600.0;
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);

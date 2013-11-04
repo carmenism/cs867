@@ -11,6 +11,7 @@ class HorizonGraph;
 class LineChart;
 class Chart;
 class Stopwatch;
+class PickColor;
 
 #include <vector>
 #include <fstream>
@@ -21,8 +22,11 @@ public:
     ~Experiment();
 
     void draw();
+    void drawToPick(std::vector<PickColor *> *pickColors);
     void startTrial();
     bool endTrial(int responseIndex);
+
+    int getNumberCharts();
 private:
     int nTrials;
     int nTasks;

@@ -4,12 +4,17 @@
 #include "HorizonGraph.h"
 #include "LineChart.h"
 #include "TimeMark.h"
+#include "PickColor.h"
 
 ChartSet::ChartSet(DataSet *dataSet) {
     this->dataSet = dataSet;
 
+    x = 100;
+    y = 50;
+
     chartWidth = 500;
     chartHeight = 25;
+    chartSpacing = 10;
 
     currentChart = 0;
 }
@@ -26,12 +31,8 @@ void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
     currentChart->setGlobalMinY(dataSet->getGlobalMinY());
     currentChart->setGlobalMaxY(dataSet->getGlobalMaxY());
 
-    float x = 100;
-    float y = 100;
-    float spacing = 10;
-
     for (int chart = 0; chart < dataSet->getNumberCharts(); chart++) {
-        currentChart->draw(dataSet->getValues(chart), x, y + (chartHeight + spacing) * chart);
+        currentChart->draw(dataSet->getValues(chart), x, getChartYLocation(chart));
     }
 
     for (int tm = 0; tm < timeMarks->size(); tm++) {
@@ -39,10 +40,20 @@ void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
         int chart = timeMark->getChart();
         int time = timeMark->getTime();
 
-        currentChart->drawLine(x, y + (chartHeight + spacing) * chart, time);
+        currentChart->drawLine(x, getChartYLocation(chart), time);
     }
+}
+
+int ChartSet::getChartYLocation(int chartIndex) {
+    return y + (chartHeight + chartSpacing) * chartIndex;
 }
 
 void ChartSet::updateValues() {
     dataSet->updateValues();
+}
+
+void ChartSet::drawToPick(std::vector<PickColor *> *pickColors) {
+    for (int i = 0; i < dataSet->getNumberCharts(); i++) {
+        currentChart->drawToPick(pickColors->at(i), x, getChartYLocation(i));
+    }
 }

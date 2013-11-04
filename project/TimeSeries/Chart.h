@@ -1,6 +1,8 @@
 #ifndef CHART_H_
 #define CHART_H_
 
+class PickColor;
+
 #include <vector>
 #include <string>
 
@@ -23,7 +25,11 @@ public:
     
     void drawLine(float x, float y, int time);
 
+    void drawToPick(PickColor *pickColor, float x, float y);
+
     std::string getLabel() { return label; }
+
+    void setPick(PickColor *pickColor);
 protected:
     float x, y;
     float globalMinX, globalMaxX;

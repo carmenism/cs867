@@ -1,4 +1,5 @@
 #include "Chart.h"
+#include "PickColor.h"
 #include <GL/glut.h>
 
 Chart::Chart(std::string label) {
@@ -77,6 +78,22 @@ void Chart::drawLine(float x, float y, int time) {
         glBegin(GL_LINE_LOOP);
             glVertex2f( xPos, 0 );
             glVertex2f( xPos, height );
+        glEnd();
+    glPopMatrix();
+}
+
+void Chart::drawToPick(PickColor *pickColor, float x, float y) {
+    glPushMatrix();
+        glTranslatef(x, y, 0);
+
+        glPolygonMode(GL_FRONT, GL_FILL);            
+        glColor3ub(pickColor->r, pickColor->g, pickColor->b);
+
+        glBegin(GL_POLYGON);
+            glVertex2f( 0, 0 );
+            glVertex2f( 0, height );
+            glVertex2f( width, height );
+            glVertex2f( width, 0 );
         glEnd();
     glPopMatrix();
 }

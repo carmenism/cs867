@@ -7,6 +7,7 @@
 #include "HorizonGraph.h"
 #include "LineChart.h"
 #include "Stopwatch.h"
+#include "PickColor.h"
 
 Experiment::Experiment() {
     outFile.open("outputResults.csv");
@@ -69,6 +70,13 @@ void Experiment::draw() {
     chartSet->draw(timeMarks);
 }
 
+void Experiment::drawToPick(std::vector<PickColor *> *pickColors) {
+    int typeIndex = getTypeIndex();
+
+    chartSet->setCurrentChart(chartTypes->at(typeIndex));
+    chartSet->drawToPick(pickColors);
+}
+
 void Experiment::startTrial() {   
     chartSet->updateValues();
     int taskIndex = getTaskIndex();
@@ -112,4 +120,8 @@ void Experiment::writeRecord(bool correctAnswer, double time) {
     }
 
     outFile << time << "\n";
+}
+
+int Experiment::getNumberCharts() {
+    return dataSet->getNumberCharts();
 }
