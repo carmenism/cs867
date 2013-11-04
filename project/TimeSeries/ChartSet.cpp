@@ -20,7 +20,14 @@ ChartSet::~ChartSet() {
 void ChartSet::draw() {
     currentChart->setWidth(chartWidth);
     currentChart->setHeight(chartHeight);
-    dataSet->draw(currentChart);     
+    currentChart->setGlobalMinX(dataSet->getGlobalMinX());
+    currentChart->setGlobalMaxX(dataSet->getGlobalMaxX());
+    currentChart->setGlobalMinY(dataSet->getGlobalMinY());
+    currentChart->setGlobalMaxY(dataSet->getGlobalMaxY());
+
+    for (int i = 0; i < dataSet->getNumberCharts(); i++) {
+        currentChart->draw(dataSet->getValues(i), 100, 100 + 35 * i);
+    }
 }
 
 void ChartSet::updateValues() {

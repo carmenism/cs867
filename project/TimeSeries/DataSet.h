@@ -13,11 +13,10 @@ public:
 
     void updateValues();
 
-    void draw(Chart *chartStyle);
-
-    //void draw();
     float getGlobalMinX() { return globalMinX; }
     float getGlobalMaxX() { return globalMaxX; }
+    float getGlobalMinY() { return globalMinY; }
+    float getGlobalMaxY() { return globalMaxY; }
 
     int getNumberCharts();
     float getValue(int chartIndex, int timeIndex);

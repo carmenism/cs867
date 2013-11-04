@@ -58,14 +58,13 @@ void Experiment::draw() {
     int typeIndex = (trialNumber / nTrials) % nTypes;
 
     chartSet->setCurrentChart(chartTypes->at(typeIndex));
-
     chartSet->draw();
 }
 
-void Experiment::startTrial() {
+void Experiment::startTrial() {    
+    chartSet->updateValues();
     int taskIndex = trialNumber / (nTrials * nTypes);
     tasks->at(taskIndex)->configure();
-    chartSet->updateValues();
 }
 
 bool Experiment::endTrial() {

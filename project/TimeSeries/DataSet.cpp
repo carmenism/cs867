@@ -73,14 +73,3 @@ void DataSet::clearValues() {
         allValues->pop_back();
     }
 }
-
-void DataSet::draw(Chart *chartStyle) {
-    chartStyle->setGlobalMinX(globalMinX);
-    chartStyle->setGlobalMaxX(globalMaxX);
-    chartStyle->setGlobalMinY(globalMinY);
-    chartStyle->setGlobalMaxY(globalMaxY);
-
-    for (int i = 0; i < numberCharts; i++) {
-        chartStyle->draw(allValues->at(i), 100, 100 + 35 * i);
-    }  
-}
