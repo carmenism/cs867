@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <iostream>
 
-SlopeTask::SlopeTask(DataSet *dataSet) : Task(dataSet) {
+SlopeTask::SlopeTask(DataSet *dataSet) 
+: Task("Slope", dataSet) {
     distanceFromStart = 0.1;
     distanceFromEnd = 0.1;
     distanceBetween = 0.25;

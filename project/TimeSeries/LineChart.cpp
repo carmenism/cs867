@@ -2,7 +2,8 @@
 #include "Color.h"
 #include "GL/glut.h"
 
-LineChart::LineChart() {
+LineChart::LineChart() 
+: Chart("Small Multiples") {
     color = new Color(1, 0, 0, 1);
 }
 

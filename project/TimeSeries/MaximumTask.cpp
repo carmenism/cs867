@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <iostream>
 
-MaximumTask::MaximumTask(DataSet *dataSet) : Task(dataSet) {
+MaximumTask::MaximumTask(DataSet *dataSet) 
+: Task("Maximum", dataSet) {
     distanceFromStart = 0.1;
     distanceFromEnd = 0.1;
 }

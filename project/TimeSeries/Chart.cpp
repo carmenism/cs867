@@ -1,8 +1,8 @@
 #include "Chart.h"
 #include <GL/glut.h>
 
-Chart::Chart() {
-
+Chart::Chart(std::string label) {
+    this->label = label;
 }
 
 Chart::~Chart() {

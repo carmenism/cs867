@@ -5,7 +5,8 @@
 #include <iostream>
 #include <cmath>
 
-DiscriminationTask::DiscriminationTask(DataSet *dataSet) : Task(dataSet) {
+DiscriminationTask::DiscriminationTask(DataSet *dataSet) 
+: Task("Discrimination", dataSet) {
     distanceFromStart = 0.1;
     distanceFromEnd = 0.1;
 

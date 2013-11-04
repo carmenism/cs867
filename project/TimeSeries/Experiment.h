@@ -10,8 +10,10 @@ class SlopeTask;
 class HorizonGraph;
 class LineChart;
 class Chart;
+class Stopwatch;
 
 #include <vector>
+#include <fstream>
 
 class Experiment {
 public:
@@ -20,7 +22,7 @@ public:
 
     void draw();
     void startTrial();
-    bool endTrial();
+    bool endTrial(int responseIndex);
 private:
     int nTrials;
     int nTasks;
@@ -28,6 +30,10 @@ private:
 
     int trialNumber;
     int totalTrials;
+
+    std::ofstream outFile;
+
+    Stopwatch *stopwatch;
 
     DataSet *dataSet;
     ChartSet *chartSet;
@@ -42,6 +48,10 @@ private:
 
     HorizonGraph *hg;
     LineChart *line;
+
+    int getTaskIndex();
+    int getTypeIndex();
+    void writeRecord(bool correctAnswer, double time);
 };
 
 #endif /* EXPERIMENT_H_ */

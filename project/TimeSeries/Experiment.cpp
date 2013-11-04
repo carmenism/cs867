@@ -6,8 +6,13 @@
 #include "SlopeTask.h"
 #include "HorizonGraph.h"
 #include "LineChart.h"
+#include "Stopwatch.h"
 
 Experiment::Experiment() {
+    outFile.open("outputResults.csv");
+
+    stopwatch = new Stopwatch();
+
     dataSet = new DataSet();
     chartSet = new ChartSet(dataSet);
 
@@ -37,6 +42,7 @@ Experiment::Experiment() {
 }
 
 Experiment::~Experiment() {
+    delete stopwatch;
     delete taskMax;
     delete taskSlope;
     delete taskDisc;
@@ -54,8 +60,8 @@ Experiment::~Experiment() {
 }
 
 void Experiment::draw() {
-    int taskIndex = trialNumber / (nTrials * nTypes);
-    int typeIndex = (trialNumber / nTrials) % nTypes;
+    int taskIndex = getTaskIndex();
+    int typeIndex = getTypeIndex();
 
     std::vector<TimeMark *> *timeMarks = tasks->at(taskIndex)->getTimeMarks();
 
@@ -63,18 +69,47 @@ void Experiment::draw() {
     chartSet->draw(timeMarks);
 }
 
-void Experiment::startTrial() {    
+void Experiment::startTrial() {   
     chartSet->updateValues();
-    int taskIndex = trialNumber / (nTrials * nTypes);
+    int taskIndex = getTaskIndex();
     tasks->at(taskIndex)->configure();
+    stopwatch->start();
 }
 
-bool Experiment::endTrial() {
+bool Experiment::endTrial(int responseIndex) {
+    double time = stopwatch->stop();
+    bool answerCorrect = tasks->at(getTaskIndex())->responseCorrect(responseIndex);
+
+    this->writeRecord(answerCorrect, time);
+
     trialNumber++;
 
     if (trialNumber == totalTrials) {
+        outFile.close();
+
         return false;
     }
 
     return true;
+}
+
+int Experiment::getTaskIndex() {
+    return trialNumber / (nTrials * nTypes);
+}
+
+int Experiment::getTypeIndex() {
+    return (trialNumber / nTrials) % nTypes;
+}
+
+void Experiment::writeRecord(bool correctAnswer, double time) {
+    outFile << tasks->at(getTaskIndex())->getLabel() << ",";
+    outFile << chartTypes->at(getTypeIndex())->getLabel() << ",";
+
+    if (correctAnswer) {
+        outFile << "Correct,";
+    } else {
+        outFile << "Incorrect,";
+    }
+
+    outFile << time << "\n";
 }

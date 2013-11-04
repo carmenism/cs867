@@ -2,7 +2,8 @@
 #include "DataSet.h"
 #include "TimeMark.h"
 
-Task::Task(DataSet *dataSet) {
+Task::Task(std::string label, DataSet *dataSet) {
+    this->label = label;
     this->dataSet = dataSet;
 
     timeMarks = new std::vector<TimeMark *>();

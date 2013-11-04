@@ -2,10 +2,11 @@
 #define CHART_H_
 
 #include <vector>
+#include <string>
 
 class Chart {
 public:
-    Chart();
+    Chart(std::string label);
     ~Chart();
 
     void setGlobalMinX(float mX) { globalMinX = mX; }
@@ -21,11 +22,15 @@ public:
     virtual void drawAtOrigin(std::vector<float> *values) = 0;
     
     void drawLine(float x, float y, int time);
+
+    std::string getLabel() { return label; }
 protected:
     float x, y;
     float globalMinX, globalMaxX;
     float globalMinY, globalMaxY;
     float width, height;
+
+    std::string label;
 
     virtual float getXLocation(float value);
     virtual float getYLocation(float value);

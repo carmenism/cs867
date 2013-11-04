@@ -5,10 +5,11 @@ class DataSet;
 class TimeMark;
 
 #include <vector>
+#include <string>
 
 class Task {
 public:
-    Task(DataSet *dataSet);
+    Task(std::string label, DataSet *dataSet);
     ~Task();
     
     bool responseCorrect(int responseIndex);
@@ -18,8 +19,11 @@ public:
     std::vector<TimeMark *> *getTimeMarks() { return timeMarks; }
 
     void clearTimeMarks();
+
+    std::string getLabel() { return label; }
 protected:
     DataSet *dataSet;
+    std::string label;
     int answerIndex;
     
     std::vector<TimeMark *> *timeMarks;

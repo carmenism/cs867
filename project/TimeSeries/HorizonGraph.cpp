@@ -3,7 +3,8 @@
 #include <GL/glut.h>
 #include <iostream>
 
-HorizonGraph::HorizonGraph() {
+HorizonGraph::HorizonGraph() 
+: Chart("Horizon Graphs") {
     numberBands = 3;
     
     colorPos = new Color(0, 0, 0.8, 0.4);
