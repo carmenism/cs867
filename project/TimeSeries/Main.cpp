@@ -1,18 +1,11 @@
-#include "RandomWalk.h"
-#include "HorizonGraph.h"
-#include "LineChart.h"
-#include "ChartSet.h"
-#include "DataSet.h"
-#include "DiscriminationTask.h"
+#include "Experiment.h"
 #include <vector>
 #include <iostream>
 #include <GL/glut.h>
 
 float winWid,winHeight;
 
-DataSet *dataSet = 0;
-ChartSet *chartSet = 0;
-DiscriminationTask *slopeTask = 0;
+Experiment *experiment;
 
 void InitLighting()
 {
@@ -47,8 +40,8 @@ void redraw( void )
 	glColor3f(1.0,1.0,1.0);
     glPolygonMode( GL_FRONT, GL_FILL );    
    
-    if (chartSet != 0) {
-        chartSet->draw();
+    if (experiment != 0) {
+        experiment->draw();
     }
 
 	glutSwapBuffers();
@@ -79,12 +72,8 @@ void keyboard(unsigned char key, int x, int y) {
 }
 
 int main(int argc, char *argv[]) {
-    dataSet = new DataSet();
-    chartSet = new ChartSet(dataSet);
-    chartSet->updateValues();
-
-    slopeTask = new DiscriminationTask(dataSet);
-    slopeTask->configure();
+    experiment = new Experiment();
+    experiment->startTrial();
   
 	winWid = 1200.0;
 	winHeight = 800.0;

@@ -10,15 +10,10 @@ ChartSet::ChartSet(DataSet *dataSet) {
     chartWidth = 500;
     chartHeight = 25;
 
-    hg = new HorizonGraph();
-    line = new LineChart();
-
-    currentChart = hg;
+    currentChart = 0;
 }
 
 ChartSet::~ChartSet() {
-    delete hg;
-    delete line;
     delete dataSet;
 }
 

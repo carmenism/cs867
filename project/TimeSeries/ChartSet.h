@@ -12,6 +12,7 @@ public:
     ~ChartSet();
 
     void updateValues();
+    void setCurrentChart(Chart *c) { currentChart = c; }
 
     void draw();
 private:
@@ -19,8 +20,6 @@ private:
     int chartWidth, chartHeight;
 
     Chart *currentChart;
-    HorizonGraph *hg;
-    LineChart *line;
 
     DataSet *dataSet;
 };
