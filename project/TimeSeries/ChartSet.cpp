@@ -3,6 +3,7 @@
 #include "Chart.h"
 #include "HorizonGraph.h"
 #include "LineChart.h"
+#include "TimeMark.h"
 
 ChartSet::ChartSet(DataSet *dataSet) {
     this->dataSet = dataSet;
@@ -17,7 +18,7 @@ ChartSet::~ChartSet() {
     delete dataSet;
 }
 
-void ChartSet::draw() {
+void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
     currentChart->setWidth(chartWidth);
     currentChart->setHeight(chartHeight);
     currentChart->setGlobalMinX(dataSet->getGlobalMinX());
@@ -25,8 +26,20 @@ void ChartSet::draw() {
     currentChart->setGlobalMinY(dataSet->getGlobalMinY());
     currentChart->setGlobalMaxY(dataSet->getGlobalMaxY());
 
-    for (int i = 0; i < dataSet->getNumberCharts(); i++) {
-        currentChart->draw(dataSet->getValues(i), 100, 100 + 35 * i);
+    float x = 100;
+    float y = 100;
+    float spacing = 10;
+
+    for (int chart = 0; chart < dataSet->getNumberCharts(); chart++) {
+        currentChart->draw(dataSet->getValues(chart), x, y + (chartHeight + spacing) * chart);
+    }
+
+    for (int tm = 0; tm < timeMarks->size(); tm++) {
+        TimeMark *timeMark = timeMarks->at(tm);
+        int chart = timeMark->getChart();
+        int time = timeMark->getTime();
+
+        currentChart->drawLine(x, y + (chartHeight + spacing) * chart, time);
     }
 }
 

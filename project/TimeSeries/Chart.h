@@ -19,6 +19,8 @@ public:
 
     void draw(std::vector<float> *values, float x, float y);
     virtual void drawAtOrigin(std::vector<float> *values) = 0;
+    
+    void drawLine(float x, float y, int time);
 protected:
     float x, y;
     float globalMinX, globalMaxX;

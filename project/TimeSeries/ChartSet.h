@@ -5,6 +5,9 @@ class Chart;
 class HorizonGraph;
 class LineChart;
 class DataSet;
+class TimeMark;
+
+#include <vector>
 
 class ChartSet {
 public:
@@ -14,7 +17,7 @@ public:
     void updateValues();
     void setCurrentChart(Chart *c) { currentChart = c; }
 
-    void draw();
+    void draw(std::vector<TimeMark *> *timeMarks);
 private:
     int numberCharts;
     int chartWidth, chartHeight;

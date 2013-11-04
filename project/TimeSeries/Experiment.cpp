@@ -57,8 +57,10 @@ void Experiment::draw() {
     int taskIndex = trialNumber / (nTrials * nTypes);
     int typeIndex = (trialNumber / nTrials) % nTypes;
 
+    std::vector<TimeMark *> *timeMarks = tasks->at(taskIndex)->getTimeMarks();
+
     chartSet->setCurrentChart(chartTypes->at(typeIndex));
-    chartSet->draw();
+    chartSet->draw(timeMarks);
 }
 
 void Experiment::startTrial() {    

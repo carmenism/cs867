@@ -26,9 +26,6 @@ float Chart::getYLocation(float value) {
 }
 
 void Chart::draw(std::vector<float> *values, float x, float y) {
-    //glEnable(GL_SCISSOR_TEST);
-    //glScissor(x, y, width, height);
-
     this->x = x;
     this->y = y;
 
@@ -48,6 +45,38 @@ void Chart::draw(std::vector<float> *values, float x, float y) {
             glVertex2f( width, 0 );
         glEnd();
     glPopMatrix();
+    
+    /*for (int i = 0; i < 10; i++) {
+        glPushMatrix();
+            glTranslatef(x, y, 0);
 
-    //glDisable(GL_SCISSOR_TEST);
+            float xPos = getXLocation(i * 100);
+
+            glPolygonMode(GL_FRONT, GL_LINE);  
+            glLineWidth(1.0);
+            glColor4f(0, 1, 0, 1);
+
+            glBegin(GL_LINE_LOOP);
+                glVertex2f( xPos, 0 );
+                glVertex2f( xPos, height );
+            glEnd();
+        glPopMatrix();
+    }*/
+}
+
+void Chart::drawLine(float x, float y, int time) {
+    glPushMatrix();
+        glTranslatef(x, y, 0);
+
+        float xPos = getXLocation(time);
+
+        glPolygonMode(GL_FRONT, GL_LINE);  
+        glLineWidth(1.0);
+        glColor4f(0, 0, 0, 1);
+
+        glBegin(GL_LINE_LOOP);
+            glVertex2f( xPos, 0 );
+            glVertex2f( xPos, height );
+        glEnd();
+    glPopMatrix();
 }

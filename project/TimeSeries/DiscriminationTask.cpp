@@ -1,5 +1,6 @@
 #include "DiscriminationTask.h"
 #include "DataSet.h"
+#include "TimeMark.h"
 #include <stdlib.h>
 #include <iostream>
 #include <cmath>
@@ -63,11 +64,12 @@ void DiscriminationTask::determineTimes() {
         }
 
         times->push_back(t);
+        timeMarks->push_back(new TimeMark(i, t));
     }
 
-    for (int i = 0; i < times->size(); i++) {
-        std::cout << " " << times->at(i);
-    }
+    //for (int i = 0; i < times->size(); i++) {
+    //    std::cout << " " << times->at(i);
+    //}
 }
 
 void DiscriminationTask::determineAnswer() {

@@ -1,5 +1,6 @@
 #include "MaximumTask.h"
 #include "DataSet.h"
+#include "TimeMark.h"
 #include <stdlib.h>
 #include <iostream>
 
@@ -24,6 +25,12 @@ void MaximumTask::determineTimes() {
     int rangeI = endI - startI;
 
     time = startI + rand() % rangeI;
+
+    for (int i = 0; i < dataSet->getNumberCharts(); i++) {
+        timeMarks->push_back(new TimeMark(i, time));
+    }
+
+    //std::cout << time;
 }
 
 void MaximumTask::determineAnswer() {

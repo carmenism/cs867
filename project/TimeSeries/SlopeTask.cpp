@@ -1,5 +1,6 @@
 #include "SlopeTask.h"
 #include "DataSet.h"
+#include "TimeMark.h"
 #include <stdlib.h>
 #include <iostream>
 
@@ -43,6 +44,11 @@ void SlopeTask::determineTimes() {
         float temp = timeA;
         timeA = timeB;
         timeB = temp;
+    }
+
+    for (int i = 0; i < dataSet->getNumberCharts(); i++) {
+        timeMarks->push_back(new TimeMark(i, timeA));
+        timeMarks->push_back(new TimeMark(i, timeB));
     }
 
     //std::cout << "\n" << timeA << ", " << timeB << "\n";
