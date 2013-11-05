@@ -2,6 +2,7 @@
 #define CHART_H_
 
 class PickColor;
+class Color;
 
 #include <vector>
 #include <string>
@@ -35,11 +36,17 @@ protected:
     float globalMinX, globalMaxX;
     float globalMinY, globalMaxY;
     float width, height;
+    float buttonOffsetX, buttonOffsetY;
+    float buttonWidth, buttonHeight;
+
+    Color *buttonColor;
 
     std::string label;
 
     virtual float getXLocation(float value);
     virtual float getYLocation(float value);
+
+    void drawButton(float x, float y);
 };
 
 #endif /* CHART_H_ */
