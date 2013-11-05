@@ -22,9 +22,9 @@ Experiment::Experiment() {
     taskSlope = new SlopeTask(dataSet);
 
     tasks = new std::vector<Task *>();
-    tasks->push_back(taskSlope);
     tasks->push_back(taskMax);
     tasks->push_back(taskDisc);
+    tasks->push_back(taskSlope);
 
     hg = new HorizonGraph();
     line = new LineChart();
