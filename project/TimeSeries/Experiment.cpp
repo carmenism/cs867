@@ -22,9 +22,9 @@ Experiment::Experiment() {
     taskSlope = new SlopeTask(dataSet);
 
     tasks = new std::vector<Task *>();
+    tasks->push_back(taskSlope);
     tasks->push_back(taskMax);
     tasks->push_back(taskDisc);
-    tasks->push_back(taskSlope);
 
     hg = new HorizonGraph();
     line = new LineChart();
@@ -68,6 +68,8 @@ void Experiment::draw() {
 
     chartSet->setCurrentChart(chartTypes->at(typeIndex));
     chartSet->draw(timeMarks);
+
+    tasks->at(taskIndex)->drawInstructions(25, 750);
 }
 
 void Experiment::drawToPick(std::vector<PickColor *> *pickColors) {

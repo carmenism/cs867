@@ -97,8 +97,8 @@ int main(int argc, char *argv[]) {
 
     picker = new Picker(experiment);
   
-	winWid = 800.0;
-	winHeight = 600.0;
+	winWid = 1000.0;
+	winHeight = 800.0;
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);

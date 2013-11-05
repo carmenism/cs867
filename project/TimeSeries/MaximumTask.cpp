@@ -5,7 +5,7 @@
 #include <iostream>
 
 MaximumTask::MaximumTask(DataSet *dataSet) 
-: Task("Maximum", dataSet) {
+: Task("Maximum", "Find the time series with the highest value at the marked time", dataSet) {
     distanceFromStart = 0.1;
     distanceFromEnd = 0.1;
 }

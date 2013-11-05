@@ -5,7 +5,7 @@
 #include <iostream>
 
 SlopeTask::SlopeTask(DataSet *dataSet) 
-: Task("Slope", dataSet) {
+: Task("Slope", "Find the time series with the highest increase from the 1st marked time to the 2nd marked time", dataSet) {
     distanceFromStart = 0.1;
     distanceFromEnd = 0.1;
     distanceBetween = 0.25;

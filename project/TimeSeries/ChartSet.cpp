@@ -9,8 +9,8 @@
 ChartSet::ChartSet(DataSet *dataSet) {
     this->dataSet = dataSet;
 
-    x = 100;
-    y = 50;
+    x = 200;
+    y = 150;
 
     chartWidth = 500;
     chartHeight = 25;

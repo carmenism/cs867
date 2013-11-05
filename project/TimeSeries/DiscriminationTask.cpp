@@ -6,7 +6,7 @@
 #include <cmath>
 
 DiscriminationTask::DiscriminationTask(DataSet *dataSet) 
-: Task("Discrimination", dataSet) {
+: Task("Discrimination", "Find the time series with the highest value at its marked time", dataSet) {
     distanceFromStart = 0.1;
     distanceFromEnd = 0.1;
 

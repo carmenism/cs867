@@ -9,7 +9,7 @@ class TimeMark;
 
 class Task {
 public:
-    Task(std::string label, DataSet *dataSet);
+    Task(std::string label, std::string instructions, DataSet *dataSet);
     ~Task();
     
     bool responseCorrect(int responseIndex);
@@ -21,9 +21,12 @@ public:
     void clearTimeMarks();
 
     std::string getLabel() { return label; }
+
+    void drawInstructions(int x, int y);
 protected:
     DataSet *dataSet;
     std::string label;
+    std::string instructions;
     int answerIndex;
     
     std::vector<TimeMark *> *timeMarks;
