@@ -62,11 +62,28 @@ void motion(int x, int y) {
     // called when a mouse is in motion with a button down
 }
 
+void pause(int pauseLength) {
+	for(int i = 0; i < pauseLength; i++) {
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutSwapBuffers();
+	}
+}
 
 void mousebutton(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-        int i = picker->pick(x, winHeight - y);
-        std::cout << i << "\n";
+        int response = picker->pick(x, winHeight - y);
+
+        if (response != -1) {
+            std::cout << response << "\n";
+            bool continueTrial = experiment->endTrial(response);
+
+            if (continueTrial) {
+                pause(1000);
+                experiment->startTrial();
+            } else {
+                exit(0);
+            }
+        }
     }
 }
 
