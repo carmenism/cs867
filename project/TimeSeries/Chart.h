@@ -31,13 +31,19 @@ public:
     std::string getLabel() { return label; }
 
     void setPick(PickColor *pickColor);
+
+    void setIndex(int i) { index = i; }
+
+    float getSpacing() { return spacing; }
 protected:
+    int index;
     float x, y;
     float globalMinX, globalMaxX;
     float globalMinY, globalMaxY;
     float width, height;
     float buttonOffsetX, buttonOffsetY;
     float buttonWidth, buttonHeight;
+    float spacing;
 
     Color *buttonColor;
 
@@ -46,7 +52,10 @@ protected:
     virtual float getXLocation(float value);
     virtual float getYLocation(float value);
 
-    void drawButton(float x, float y);
+    virtual void drawButton(float x, float y);
+
+    virtual void drawWhiteBackground(float x, float y);
+    virtual void drawBorder(float x, float y);
 };
 
 #endif /* CHART_H_ */

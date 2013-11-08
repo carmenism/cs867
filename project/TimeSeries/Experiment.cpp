@@ -5,6 +5,7 @@
 #include "DiscriminationTask.h"
 #include "SlopeTask.h"
 #include "HorizonGraph.h"
+#include "StackedChart.h"
 #include "LineChart.h"
 #include "Stopwatch.h"
 #include "PickColor.h"
@@ -26,10 +27,12 @@ Experiment::Experiment() {
     tasks->push_back(taskDisc);
     tasks->push_back(taskSlope);
 
+    stacked = new StackedChart();
     hg = new HorizonGraph();
     line = new LineChart();
 
     chartTypes = new std::vector<Chart *>();
+    chartTypes->push_back(stacked);
     chartTypes->push_back(hg);
     chartTypes->push_back(line);
 

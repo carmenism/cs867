@@ -91,12 +91,7 @@ void keyboard(unsigned char key, int x, int y) {
     	
 }
 
-int main(int argc, char *argv[]) {
-    experiment = new Experiment();
-    experiment->startTrial();
-
-    picker = new Picker(experiment);
-  
+int main(int argc, char *argv[]) {  
 	winWid = 1000.0;
 	winHeight = 800.0;
 
@@ -106,7 +101,7 @@ int main(int argc, char *argv[]) {
 	glutPositionWindow(200,100);
 	glutReshapeWindow(int(winWid),int(winHeight));
 
-	glClearColor(0.9,0.9,0.9,1.0);
+	glClearColor(1,1,1,1.0);
 	InitLighting();
 
     glViewport(0, 0, winWid, winHeight);
@@ -126,6 +121,11 @@ int main(int argc, char *argv[]) {
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    experiment = new Experiment();
+    experiment->startTrial();
+
+    picker = new Picker(experiment);
 
 	glutMainLoop();
 

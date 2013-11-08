@@ -4,7 +4,7 @@
 
 DataSet::DataSet() {
     numberCharts = 15;
-    numberTimeSteps = 500;
+    numberTimeSteps = 100;
 
     walk = new RandomWalk();
 

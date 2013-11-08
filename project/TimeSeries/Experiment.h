@@ -9,6 +9,7 @@ class MaximumTask;
 class SlopeTask;
 class HorizonGraph;
 class LineChart;
+class StackedChart;
 class Chart;
 class Stopwatch;
 class PickColor;
@@ -52,6 +53,7 @@ private:
 
     HorizonGraph *hg;
     LineChart *line;
+    StackedChart *stacked;
 
     int getTaskIndex();
     int getTypeIndex();

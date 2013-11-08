@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#define NUM_CHOICES 3
+#define NUM_CHOICES 2
 
 class RandomWalk {
 public:

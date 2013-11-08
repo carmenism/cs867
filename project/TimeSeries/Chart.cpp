@@ -10,6 +10,7 @@ Chart::Chart(std::string label) {
     buttonWidth = 15;
     buttonHeight = 15;
     buttonColor = new Color(0, 0, 0, 1);
+    spacing = 10;
 }
 
 Chart::~Chart() {
@@ -36,25 +37,42 @@ void Chart::draw(std::vector<float> *values, float x, float y) {
     this->x = x;
     this->y = y;
 
+    drawWhiteBackground(x, y);
+
     glPushMatrix();
         glTranslatef(x, y, 0);
 
-        glPolygonMode(GL_FRONT, GL_FILL);  
-        glColor4f(1, 1, 1, 1);
+        drawAtOrigin(values);
+    glPopMatrix();
 
+    drawBorder(x, y);
+
+    glColor4f(buttonColor->r, buttonColor->g, buttonColor->b, buttonColor->a);
+    drawButton(x, y);
+}
+
+void Chart::drawWhiteBackground(float x, float y) {
+    glPolygonMode(GL_FRONT, GL_FILL);  
+    glColor4f(1, 1, 1, 1);
+
+    glPushMatrix();
+        glTranslatef(x, y, 0);
         glBegin(GL_POLYGON);
             glVertex2f( 0, 0 );
             glVertex2f( 0, height );
             glVertex2f( width, height );
             glVertex2f( width, 0 );
         glEnd();
+    glPopMatrix();
+}
 
-        drawAtOrigin(values);
+void Chart::drawBorder(float x, float y) {
+    glPolygonMode(GL_FRONT, GL_LINE);  
+    glLineWidth(1.0);
+    glColor4f(0, 0, 0, 1);
 
-        glPolygonMode(GL_FRONT, GL_LINE);  
-        glLineWidth(1.0);
-        glColor4f(0, 0, 0, 1);
-
+    glPushMatrix();
+        glTranslatef(x, y, 0);
         glBegin(GL_LINE_LOOP);
             glVertex2f( 0, 0 );
             glVertex2f( 0, height );
@@ -62,9 +80,6 @@ void Chart::draw(std::vector<float> *values, float x, float y) {
             glVertex2f( width, 0 );
         glEnd();
     glPopMatrix();
-
-    glColor4f(buttonColor->r, buttonColor->g, buttonColor->b, buttonColor->a);
-    drawButton(x, y);
 }
 
 void Chart::drawLine(float x, float y, int time) {

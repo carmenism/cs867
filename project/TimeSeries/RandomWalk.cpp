@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int RandomWalk::CHOICES[NUM_CHOICES] = { -1, 0, 1 };
+int RandomWalk::CHOICES[NUM_CHOICES] = { -1, 1 };
 
 RandomWalk::RandomWalk() {
     srand(time(NULL));
