@@ -117,3 +117,9 @@ void Chart::drawButton(float x, float y) {
         glEnd();
     glPopMatrix();
 }
+
+float Chart::calculateHeight(float fullHeight, int numberCharts) {
+    float withoutSpacing = fullHeight - (numberCharts - 1) * spacing;
+
+    return withoutSpacing / numberCharts;
+}

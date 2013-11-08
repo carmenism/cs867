@@ -18,6 +18,7 @@ public:
     void drawTex(float *Xpts, float*Ypts, int n,int t);
 
     virtual void drawAtOrigin(std::vector<float> *values);
+    virtual float calculateHeight(float fullHeight, int numberCharts);
 private:
     Textures *textures;
     Color *color;

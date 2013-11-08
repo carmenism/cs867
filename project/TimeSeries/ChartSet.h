@@ -17,9 +17,6 @@ public:
 
     int getX() { return x; }
     int getY() { return y; }
-    int getChartWidth() { return chartWidth; }
-    int getChartHeight() { return chartHeight; }
-    //int getChartSpacing() { return chartSpacing; }
 
     int getChartYLocation(int chartIndex);
 
@@ -32,8 +29,7 @@ public:
 private:
     int x, y;
     int numberCharts;
-    int chartWidth, chartHeight;
-    //int chartSpacing;
+    int totalWidth, totalHeight;
 
     Chart *currentChart;
 

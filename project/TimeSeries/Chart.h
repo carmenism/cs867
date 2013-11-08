@@ -20,6 +20,7 @@ public:
 
     void setWidth(float w) { width = w; }
     void setHeight(float h) { height = h; }
+    float getHeight() { return height; }
 
     void draw(std::vector<float> *values, float x, float y);
     virtual void drawAtOrigin(std::vector<float> *values) = 0;
@@ -35,6 +36,7 @@ public:
     void setIndex(int i) { index = i; }
 
     float getSpacing() { return spacing; }
+    virtual float calculateHeight(float fullHeight, int numberCharts);
 protected:
     int index;
     float x, y;

@@ -32,8 +32,8 @@ Experiment::Experiment() {
     line = new LineChart();
 
     chartTypes = new std::vector<Chart *>();
-    chartTypes->push_back(stacked);
     chartTypes->push_back(hg);
+    chartTypes->push_back(stacked);
     chartTypes->push_back(line);
 
     nTrials = 30;

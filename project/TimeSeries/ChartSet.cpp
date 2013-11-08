@@ -12,9 +12,8 @@ ChartSet::ChartSet(DataSet *dataSet) {
     x = 200;
     y = 150;
 
-    chartWidth = 500;
-    chartHeight = 25;
-    //chartSpacing = 10;
+    totalWidth = 500;
+    totalHeight = 515;
 
     currentChart = 0;
 }
@@ -26,8 +25,8 @@ ChartSet::~ChartSet() {
 void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
     float chartSpacing = currentChart->getSpacing();
 
-    currentChart->setWidth(chartWidth);
-    currentChart->setHeight(chartHeight);
+    currentChart->setWidth(totalWidth);
+    currentChart->setHeight(currentChart->calculateHeight(totalHeight, dataSet->getNumberCharts()));
     currentChart->setGlobalMinX(dataSet->getGlobalMinX());
     currentChart->setGlobalMaxX(dataSet->getGlobalMaxX());
     currentChart->setGlobalMinY(dataSet->getGlobalMinY());
@@ -48,7 +47,7 @@ void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
 }
 
 int ChartSet::getChartYLocation(int chartIndex) {
-    return y + (chartHeight + currentChart->getSpacing()) * (dataSet->getNumberCharts() - chartIndex - 1);
+    return y + (currentChart->getHeight() + currentChart->getSpacing()) * (dataSet->getNumberCharts() - chartIndex - 1);
 }
 
 void ChartSet::updateValues() {

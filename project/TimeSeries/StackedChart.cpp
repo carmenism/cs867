@@ -99,3 +99,10 @@ void StackedChart::drawWhiteBackground(float x, float y) {
 void StackedChart::drawBorder(float x, float y) {
 
 }
+
+
+float StackedChart::calculateHeight(float fullHeight, int numberCharts) {
+    float h = fullHeight / (numberCharts + (hScale - 1));
+
+    return h;
+}
