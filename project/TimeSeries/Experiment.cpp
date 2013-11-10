@@ -10,7 +10,9 @@
 #include "Stopwatch.h"
 #include "PickColor.h"
 
-Experiment::Experiment() {
+Experiment::Experiment(std::string participant) {
+    this->participant = participant;
+    //std::string title = participant + "-outputResults.csv";
     outFile.open("outputResults.csv");
 
     stopwatch = new Stopwatch();
@@ -32,11 +34,11 @@ Experiment::Experiment() {
     line = new LineChart();
 
     chartTypes = new std::vector<Chart *>();
+    chartTypes->push_back(line);
     chartTypes->push_back(stacked);
     chartTypes->push_back(hg);
-    chartTypes->push_back(line);
 
-    nTrials = 30;
+    nTrials = 10;
     nTasks = tasks->size();
     nTypes = chartTypes->size();
 
@@ -115,6 +117,7 @@ int Experiment::getTypeIndex() {
 }
 
 void Experiment::writeRecord(bool correctAnswer, double time) {
+    outFile << participant << ",";    
     outFile << tasks->at(getTaskIndex())->getLabel() << ",";
     outFile << chartTypes->at(getTypeIndex())->getLabel() << ",";
 

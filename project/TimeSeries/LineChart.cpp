@@ -4,7 +4,7 @@
 
 LineChart::LineChart() 
 : Chart("Small Multiples") {
-    color = new Color(1, 0, 0, 1);
+    color = new Color(0.5, 0.5, 0.65, 1);
 }
 
 LineChart::~LineChart() {

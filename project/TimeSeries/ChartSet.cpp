@@ -42,7 +42,7 @@ void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
         int chart = timeMark->getChart();
         int time = timeMark->getTime();
 
-        currentChart->drawLine(x, getChartYLocation(chart), time);
+        currentChart->drawLine(x, getChartYLocation(chart), time, chart);
     }
 }
 

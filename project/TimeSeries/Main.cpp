@@ -78,7 +78,7 @@ void mousebutton(int button, int state, int x, int y) {
             bool continueTrial = experiment->endTrial(response);
 
             if (continueTrial) {
-                pause(1000);
+                pause(100);
                 experiment->startTrial();
             } else {
                 exit(0);
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    experiment = new Experiment();
+    experiment = new Experiment("Chris");
     experiment->startTrial();
 
     picker = new Picker(experiment);

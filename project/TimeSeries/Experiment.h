@@ -16,10 +16,11 @@ class PickColor;
 
 #include <vector>
 #include <fstream>
+#include <string>
 
 class Experiment {
 public:
-    Experiment();
+    Experiment(std::string participant);
     ~Experiment();
 
     void draw();
@@ -29,6 +30,7 @@ public:
 
     int getNumberCharts();
 private:
+    std::string participant;
     int nTrials;
     int nTasks;
     int nTypes;

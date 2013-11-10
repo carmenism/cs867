@@ -136,3 +136,36 @@ void StackedChart::drawButton(float x, float y) {
         glEnd();
     glPopMatrix();
 }
+
+void StackedChart::drawLine(float x, float y, int time, int chart) {
+    glPushMatrix();
+        glTranslatef(x, y, 0);
+
+        float xPos = getXLocation(time);
+
+        glPolygonMode(GL_FRONT, GL_LINE);  
+        glLineWidth(2.0);
+        //glColor4f(0, 0, 0, 1);
+        PickColor *pc = textures->getColor(chart);
+        glColor3ub(pc->r, pc->g, pc->b);
+
+
+        glBegin(GL_LINE_LOOP);
+            glVertex2f( xPos, 0 );
+            glVertex2f( xPos, height * hScale);
+        glEnd();
+        glLineWidth(1.0);
+        /*PickColor *pc = textures->getColor(chart);
+        glColor3ub(pc->r, pc->g, pc->b);
+
+        glBegin(GL_LINE_LOOP);
+            glVertex2f( xPos - 1, 0 );
+            glVertex2f( xPos - 1, height * hScale);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+            glVertex2f( xPos + 1, 0 );
+            glVertex2f( xPos + 1, height * hScale);
+        glEnd();*/
+    glPopMatrix();
+}

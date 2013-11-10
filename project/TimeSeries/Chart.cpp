@@ -82,7 +82,7 @@ void Chart::drawBorder(float x, float y) {
     glPopMatrix();
 }
 
-void Chart::drawLine(float x, float y, int time) {
+void Chart::drawLine(float x, float y, int time, int chart) {
     glPushMatrix();
         glTranslatef(x, y, 0);
 
