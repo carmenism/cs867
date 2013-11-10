@@ -19,6 +19,8 @@ public:
 
     virtual void drawAtOrigin(std::vector<float> *values);
     virtual float calculateHeight(float fullHeight, int numberCharts);
+
+    virtual void drawButton(float x, float y);
 private:
     Textures *textures;
     Color *color;

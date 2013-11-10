@@ -92,8 +92,8 @@ void keyboard(unsigned char key, int x, int y) {
 }
 
 int main(int argc, char *argv[]) {  
-	winWid = 1000.0;
-	winHeight = 800.0;
+	winWid = 900.0;
+	winHeight = 700.0;
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);

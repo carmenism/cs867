@@ -32,8 +32,8 @@ Experiment::Experiment() {
     line = new LineChart();
 
     chartTypes = new std::vector<Chart *>();
-    chartTypes->push_back(hg);
     chartTypes->push_back(stacked);
+    chartTypes->push_back(hg);
     chartTypes->push_back(line);
 
     nTrials = 30;
@@ -72,7 +72,7 @@ void Experiment::draw() {
     chartSet->setCurrentChart(chartTypes->at(typeIndex));
     chartSet->draw(timeMarks);
 
-    tasks->at(taskIndex)->drawInstructions(25, 750);
+    tasks->at(taskIndex)->drawInstructions(25, 650);
 }
 
 void Experiment::drawToPick(std::vector<PickColor *> *pickColors) {

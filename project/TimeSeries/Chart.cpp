@@ -101,7 +101,17 @@ void Chart::drawLine(float x, float y, int time) {
 
 void Chart::drawToPick(PickColor *pickColor, float x, float y) {
     glColor3ub(pickColor->r, pickColor->g, pickColor->b);
-    drawButton(x, y);
+    glPushMatrix();
+        glTranslatef(x + width + buttonOffsetX, y + buttonOffsetY, 0);
+        glPolygonMode(GL_FRONT, GL_FILL);  
+        
+        glBegin(GL_POLYGON);
+            glVertex2f( 0, 0 );
+            glVertex2f( 0, buttonHeight );
+            glVertex2f( buttonWidth, buttonHeight );
+            glVertex2f( buttonWidth, 0 );
+        glEnd();
+    glPopMatrix();
 }
 
 void Chart::drawButton(float x, float y) {

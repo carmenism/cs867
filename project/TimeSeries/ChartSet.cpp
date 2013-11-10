@@ -9,8 +9,8 @@
 ChartSet::ChartSet(DataSet *dataSet) {
     this->dataSet = dataSet;
 
-    x = 200;
-    y = 150;
+    x = 150;
+    y = 75;
 
     totalWidth = 500;
     totalHeight = 515;
@@ -33,7 +33,7 @@ void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
     currentChart->setGlobalMaxY(dataSet->getGlobalMaxY());
 
     for (int chart = 0; chart < dataSet->getNumberCharts(); chart++) {
-        currentChart->setIndex(chart % 8);
+        currentChart->setIndex(chart);
         currentChart->draw(dataSet->getValues(chart), x, getChartYLocation(chart));
     }
 

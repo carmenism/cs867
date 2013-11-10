@@ -6,13 +6,11 @@
 Textures::Textures() {
     colors = new std::vector<PickColor *>();
     colors->push_back(new PickColor(250, 0, 0)); //red
-    colors->push_back(new PickColor(65, 182, 196)); // teal
-    colors->push_back(new PickColor(247, 104, 161)); // pink
+    colors->push_back(new PickColor(37, 52, 148)); // teal
     colors->push_back(new PickColor(254, 153, 41)); // orange
-    colors->push_back(new PickColor(84, 39, 143)); //(122, 1, 119)); // purple
-    colors->push_back(new PickColor(0, 104, 55)); // green
-    colors->push_back(new PickColor(153, 52, 4)); // brown
-    colors->push_back(new PickColor(130, 240, 153)); // lime green
+    colors->push_back(new PickColor(178, 58, 238)); // purple
+    colors->push_back(new PickColor(10, 215, 0)); // green
+    colors->push_back(new PickColor(255, 215, 0)); // yellow
     init();
 }
 
@@ -25,15 +23,15 @@ PickColor *Textures::getColor(int i) {
 }
 
 void Textures::init() {
-    float trans = 170;
-    int index = 0;
+    unsigned char trans = 120;
+    unsigned char transSolid = 60;
 
     // even dots
     for (int i = 0; i < TEX_SIZE; i++) {
         for (int j = 0; j < TEX_SIZE; j++) {	
-            dots[i][j][0] = colors->at(index % colors->size())->r;
-			dots[i][j][1] = colors->at(index % colors->size())->g;
-			dots[i][j][2] = colors->at(index % colors->size())->b;
+            dots[i][j][0] = colors->at(DOTS)->r;
+			dots[i][j][1] = colors->at(DOTS)->g;
+			dots[i][j][2] = colors->at(DOTS)->b;
 
             int ii = i % 8;
             int jj = j % 8;
@@ -47,46 +45,17 @@ void Textures::init() {
 		}
 	}
 
-    index++;
-
-    // wavy
-    for (int i = 0; i < TEX_SIZE; i++) {
-        for (int j = 0; j < TEX_SIZE; j++) {	
-		    wavy[i][j][0] = colors->at(index % colors->size())->r;
-			wavy[i][j][1] = colors->at(index % colors->size())->g;
-			wavy[i][j][2] = colors->at(index % colors->size())->b;
-
-            int ii = i % 8;
-            int jj = j % 8;
-
-			if (((ii == 3 || ii == 7) && (jj == 1 || jj == 5))
-                || ((ii == 2 || ii == 6) && (jj == 0 || jj == 3 || jj == 6 || jj == 7))
-                || ((ii == 1 || ii == 5) && (jj == 2 || jj == 4))
-                || ((ii == 0 || ii == 4) && (jj == 2 || jj == 4))) {
-				wavy[i][j][3] = trans;
-			} else {
-				wavy[i][j][3] = 0;
-			}	
-		}
-	}
-
-    index++;
-
-    // uneven dots
+    // slantstripes
     for (int i = 0; i < TEX_SIZE; i++) {
         for (int j = 0; j < TEX_SIZE; j++) {		
-			unevendots[i][j][0] = colors->at(index % colors->size())->r;
-			unevendots[i][j][1] = colors->at(index % colors->size())->g;
-			unevendots[i][j][2] = colors->at(index % colors->size())->b;
+			unevendots[i][j][0] = colors->at(SLANTA)->r;
+			unevendots[i][j][1] = colors->at(SLANTA)->g;
+			unevendots[i][j][2] = colors->at(SLANTA)->b;
 
             int ii = i % 4;
             int jj = j % 4;
 
             if (ii == jj) {
-			//if (((ii == 0 || ii == 1)
-            //    && (jj == 0 || jj == 1)) 
-            //    || ((ii == 4 || ii == 5)
-            //    && (jj == 4 || jj == 5))) {
 				unevendots[i][j][3] = trans;
 			} else {
 				unevendots[i][j][3] = 0;
@@ -94,34 +63,22 @@ void Textures::init() {
 		}
 	}
 
-    index++;
-
-    // grid
+    // slantstripes
     for (int i = 0; i < TEX_SIZE; i++) {
-        for (int j = 0; j < TEX_SIZE; j++) {	
-		    grid[i][j][0] = colors->at(index % colors->size())->r;
-			grid[i][j][1] = colors->at(index % colors->size())->g;
-			grid[i][j][2] = colors->at(index % colors->size())->b;
-
-            int ii = i % 8;
-            int jj = j % 8;
-
-			if (ii == 2 || ii == 3 || jj == 2 || jj == 3) {
-				grid[i][j][3] = trans;
-			} else {
-				grid[i][j][3] = 0;
-			}	
+        for (int j = 0; j < TEX_SIZE; j++) {
+		    solidA[i][j][0] = colors->at(SOLIDA)->r;
+			solidA[i][j][1] = colors->at(SOLIDA)->g;
+			solidA[i][j][2] = colors->at(SOLIDA)->b;
+		    solidA[i][j][3] = transSolid;
 		}
 	}
-
-    index++;
 
     // slantstripes
     for (int i = 0; i < TEX_SIZE; i++) {
         for (int j = 0; j < TEX_SIZE; j++) {
-		    slantstripes[i][j][0] = colors->at(index % colors->size())->r;
-			slantstripes[i][j][1] = colors->at(index % colors->size())->g;
-			slantstripes[i][j][2] = colors->at(index % colors->size())->b;
+		    slantstripes[i][j][0] = colors->at(SLANTB)->r;
+			slantstripes[i][j][1] = colors->at(SLANTB)->g;
+			slantstripes[i][j][2] = colors->at(SLANTB)->b;
 
             int ii = i % 4;
             int jj = j % 4;
@@ -137,65 +94,12 @@ void Textures::init() {
 		}
 	}
 
-    index++;
-
-    // zigzag
-    for (int i = 0; i < TEX_SIZE; i++) {
-        for (int j = 0; j < TEX_SIZE; j++) {
-		    zigzag[i][j][0] = colors->at(index % colors->size())->r;
-			zigzag[i][j][1] = colors->at(index % colors->size())->g;
-			zigzag[i][j][2] = colors->at(index % colors->size())->b;
-
-            int ii = i % 8;
-            int jj = j % 8;
-
-			if (((ii == 0 || ii == 4) && (jj == 0 || jj == 4))
-                || ((ii == 1 || ii == 5) && (jj == 1 || jj == 7))
-                || ((ii == 2 || ii == 6) && (jj == 2 || jj == 6))
-                || ((ii == 3 || ii == 7) && (jj == 3 || jj == 5))) {
-				zigzag[i][j][3] = trans;
-			} else {
-				zigzag[i][j][3] = 0;
-			}	
-		}
-	}
-
-    index++;
-
-    // slantstripes
-    for (int i = 0; i < TEX_SIZE; i++) {
-        for (int j = 0; j < TEX_SIZE; j++) {	
-		    slantgrid[i][j][0] = colors->at(index % colors->size())->r;
-			slantgrid[i][j][1] = colors->at(index % colors->size())->g;
-			slantgrid[i][j][2] = colors->at(index % colors->size())->b;
-
-            int ii = i % 8;
-            int jj = j % 8;
-
-			if ((ii == jj) 
-                || (ii == 7 && jj == 0)
-                || (ii == 6 && jj == 1)
-                || (ii == 5 && jj == 2)
-                || (ii == 4 && jj == 3)
-                || (ii == 3 && jj == 4)
-                || (ii == 2 && jj == 5)
-                || (ii == 1 && jj == 6)
-                || (ii == 0 && jj == 7)) {
-				slantgrid[i][j][3] = trans;
-			} else {
-				slantgrid[i][j][3] = 0;
-			}	
-		}
-	}
-
-    index++;
-
     // stripes
     for (int i = 0; i < TEX_SIZE; i++) {
         for (int j = 0; j < TEX_SIZE; j++) {
-		    stripes[i][j][0] = colors->at(index % colors->size())->r;
-			stripes[i][j][1] = colors->at(index % colors->size())->g;
-			stripes[i][j][2] = colors->at(index % colors->size())->b;
+		    stripes[i][j][0] = colors->at(STRIPES)->r;
+			stripes[i][j][1] = colors->at(STRIPES)->g;
+			stripes[i][j][2] = colors->at(STRIPES)->b;
 
             int jj = j % 8;
 
@@ -207,34 +111,31 @@ void Textures::init() {
 		}
 	}
 
-    index++;
+    // stripes
+    for (int i = 0; i < TEX_SIZE; i++) {
+        for (int j = 0; j < TEX_SIZE; j++) {
+		    solidB[i][j][0] = colors->at(SOLIDB)->r;
+			solidB[i][j][1] = colors->at(SOLIDB)->g;
+			solidB[i][j][2] = colors->at(SOLIDB)->b;
+      		solidB[i][j][3] = transSolid;	
+		}
+	}
 
-	glGenTextures(9, textures);
-
-	std::cerr << "TEX 1 " << textures[1] << "\n";
-    std::cerr << "TEX 2 " << textures[2] << "\n";
+	glGenTextures(6, textures);
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	glEnable(GL_TEXTURE_2D);
 
-	glBindTexture(GL_TEXTURE_2D, textures[0]);
+	glBindTexture(GL_TEXTURE_2D, textures[DOTS]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, dots);
-	
-    glBindTexture(GL_TEXTURE_2D, textures[1]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, wavy);
 
-	glBindTexture(GL_TEXTURE_2D, textures[2]);
+    glBindTexture(GL_TEXTURE_2D, textures[SLANTA]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND);
@@ -242,15 +143,15 @@ void Textures::init() {
 	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, unevendots);
 
-	glBindTexture(GL_TEXTURE_2D, textures[3]);
+    glBindTexture(GL_TEXTURE_2D, textures[SOLIDA]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, grid);
-	
-	glBindTexture(GL_TEXTURE_2D, textures[4]);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, solidA);
+
+	glBindTexture(GL_TEXTURE_2D, textures[SLANTB]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND
@@ -258,29 +159,21 @@ void Textures::init() {
 	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, slantstripes);
 
-    glBindTexture(GL_TEXTURE_2D, textures[5]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, zigzag);
-	
-    glBindTexture(GL_TEXTURE_2D, textures[6]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, slantgrid);
-
-	glBindTexture(GL_TEXTURE_2D, textures[7]);
+	glBindTexture(GL_TEXTURE_2D, textures[STRIPES]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, stripes);
+	
+    glBindTexture(GL_TEXTURE_2D, textures[SOLIDB]);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, solidB);
 	
     glDisable(GL_TEXTURE_2D);
 }

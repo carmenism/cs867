@@ -28,7 +28,7 @@ void StackedChart::drawAtOrigin(std::vector<float> *values) {
     float scale = 0.03;
     
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textures->textures[index]);
+    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 6]);
 
     for (int time = 0; time < values->size(); time++) {
         float value = values->at(time);
@@ -66,43 +66,73 @@ void StackedChart::drawAtOrigin(std::vector<float> *values) {
     PickColor *pColor = textures->getColor(index);
     glPolygonMode(GL_FRONT, GL_LINE);  
     glLineWidth(2.0);
-    glColor3f(pColor->r / 255.0, pColor->g / 255.0, pColor->b / 255.0);
+    glColor3ub(pColor->r, pColor->g, pColor->b);
 
     glBegin(GL_LINE_LOOP);
+    
+    glColor3ub(pColor->r, pColor->g, pColor->b);
     glVertex2f(0, 0);
     for (int time = 0; time < values->size(); time++) {
         float value = values->at(time);
         float posX = getXLocation(time);
         float posY = getYLocation(value) * hScale;
-	        
+	                
+        glColor3ub(pColor->r, pColor->g, pColor->b);
         glVertex2f(posX, posY);
     }
+    
+    glColor3ub(pColor->r, pColor->g, pColor->b);
     glVertex2f(width, 0);
     glEnd();
 }
 
 void StackedChart::drawWhiteBackground(float x, float y) {
-    /*glPolygonMode(GL_FRONT, GL_FILL);  
-    glColor4f(1, 1, 1, 1);
 
-    glPushMatrix();
-        glTranslatef(x, y, 0);
-        glBegin(GL_POLYGON);
-            glVertex2f( 0, 0 );
-            glVertex2f( 0, height * hScale );
-            glVertex2f( width, height * hScale );
-            glVertex2f( width, 0 );
-        glEnd();
-    glPopMatrix();*/
 }
 
 void StackedChart::drawBorder(float x, float y) {
 
 }
 
-
 float StackedChart::calculateHeight(float fullHeight, int numberCharts) {
     float h = fullHeight / (numberCharts + (hScale - 1));
 
     return h;
+}
+
+void StackedChart::drawButton(float x, float y) {
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 6]);
+    glColor3f(1,1,1);
+    glPolygonMode(GL_FRONT, GL_FILL);  
+    float scale = 0.03;
+    glPushMatrix();
+    glTranslatef(x + width + buttonOffsetX, y + buttonOffsetY, 0);
+        glBegin(GL_POLYGON);
+            glTexCoord2f(0, 0);
+            glVertex2f( 0, 0 );
+            glTexCoord2f(0, buttonHeight * scale);
+            glVertex2f( 0, buttonHeight );
+            glTexCoord2f(buttonWidth * scale, buttonHeight * scale);
+            glVertex2f( buttonWidth, buttonHeight );
+            glTexCoord2f(buttonWidth * scale, 0);
+            glVertex2f( buttonWidth, 0 );
+        glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+
+        PickColor *pColor = textures->getColor(index);
+    glLineWidth(2.0);
+    glColor3ub(pColor->r, pColor->g, pColor->b);
+    
+    glPushMatrix();
+        glTranslatef(x + width + buttonOffsetX, y + buttonOffsetY, 0);
+        glBegin(GL_LINE_LOOP);
+            glVertex2f( 0, 0 );
+            glVertex2f( 0, buttonHeight );
+            glVertex2f( buttonWidth, buttonHeight );
+            glVertex2f( buttonWidth, 0 );
+        glEnd();
+    glPopMatrix();
 }
