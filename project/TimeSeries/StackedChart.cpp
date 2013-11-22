@@ -28,7 +28,7 @@ void StackedChart::drawAtOrigin(std::vector<float> *values) {
     float scale = 0.03;
     
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 6]);
+    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 4]);
 
     for (int time = 0; time < values->size(); time++) {
         float value = values->at(time);
@@ -65,24 +65,26 @@ void StackedChart::drawAtOrigin(std::vector<float> *values) {
 
     PickColor *pColor = textures->getColor(index);
     glPolygonMode(GL_FRONT, GL_LINE);  
-    glLineWidth(2.0);
+    //glLineWidth(2.0);
     glColor3ub(pColor->r, pColor->g, pColor->b);
 
-    glBegin(GL_LINE_LOOP);
-    
+    glBegin(GL_LINE_STRIP);
+    glLineWidth(1.0);
     glColor3ub(pColor->r, pColor->g, pColor->b);
     glVertex2f(0, 0);
     for (int time = 0; time < values->size(); time++) {
         float value = values->at(time);
         float posX = getXLocation(time);
         float posY = getYLocation(value) * hScale;
-	                
+	    glLineWidth(1.0);
         glColor3ub(pColor->r, pColor->g, pColor->b);
         glVertex2f(posX, posY);
     }
     
     glColor3ub(pColor->r, pColor->g, pColor->b);
+    //glLineWidth(2.0);
     glVertex2f(width, 0);
+    glVertex2f(0, 0);
     glEnd();
 }
 
@@ -102,7 +104,7 @@ float StackedChart::calculateHeight(float fullHeight, int numberCharts) {
 
 void StackedChart::drawButton(float x, float y) {
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 6]);
+    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 4]);
     glColor3f(1,1,1);
     glPolygonMode(GL_FRONT, GL_FILL);  
     float scale = 0.03;
@@ -122,8 +124,8 @@ void StackedChart::drawButton(float x, float y) {
 
     glDisable(GL_TEXTURE_2D);
 
-        PickColor *pColor = textures->getColor(index);
-    glLineWidth(2.0);
+    PickColor *pColor = textures->getColor(index);
+    glLineWidth(1.0);
     glColor3ub(pColor->r, pColor->g, pColor->b);
     
     glPushMatrix();
@@ -144,20 +146,17 @@ void StackedChart::drawLine(float x, float y, int time, int chart) {
         float xPos = getXLocation(time);
 
         glPolygonMode(GL_FRONT, GL_LINE);  
-        glLineWidth(2.0);
-        //glColor4f(0, 0, 0, 1);
-        PickColor *pc = textures->getColor(chart);
-        glColor3ub(pc->r, pc->g, pc->b);
+        glLineWidth(1.0);
 
-
+        glColor4f(0, 0, 0, 1);
         glBegin(GL_LINE_LOOP);
             glVertex2f( xPos, 0 );
             glVertex2f( xPos, height * hScale);
         glEnd();
         glLineWidth(1.0);
-        /*PickColor *pc = textures->getColor(chart);
-        glColor3ub(pc->r, pc->g, pc->b);
-
+        PickColor *pc = textures->getColor(chart);
+        
+        glColor4ub(pc->r, pc->g, pc->b, 60);
         glBegin(GL_LINE_LOOP);
             glVertex2f( xPos - 1, 0 );
             glVertex2f( xPos - 1, height * hScale);
@@ -166,6 +165,6 @@ void StackedChart::drawLine(float x, float y, int time, int chart) {
         glBegin(GL_LINE_LOOP);
             glVertex2f( xPos + 1, 0 );
             glVertex2f( xPos + 1, height * hScale);
-        glEnd();*/
+        glEnd();
     glPopMatrix();
 }

@@ -5,12 +5,11 @@
 
 Textures::Textures() {
     colors = new std::vector<PickColor *>();
-    colors->push_back(new PickColor(250, 0, 0)); //red
-    colors->push_back(new PickColor(37, 52, 148)); // teal
-    colors->push_back(new PickColor(254, 153, 41)); // orange
-    colors->push_back(new PickColor(178, 58, 238)); // purple
+    colors->push_back(new PickColor(254, 0, 0)); // red
+    colors->push_back(new PickColor(150, 150, 150));
     colors->push_back(new PickColor(10, 215, 0)); // green
-    colors->push_back(new PickColor(255, 215, 0)); // yellow
+    colors->push_back(new PickColor(0, 0, 0));
+    //colors->push_back(new PickColor(75, 75, 75));
     init();
 }
 
@@ -23,47 +22,10 @@ PickColor *Textures::getColor(int i) {
 }
 
 void Textures::init() {
-    unsigned char trans = 120;
-    unsigned char transSolid = 60;
+    unsigned char trans = 130;
+    unsigned char transSolid = 50;
 
-    // even dots
-    for (int i = 0; i < TEX_SIZE; i++) {
-        for (int j = 0; j < TEX_SIZE; j++) {	
-            dots[i][j][0] = colors->at(DOTS)->r;
-			dots[i][j][1] = colors->at(DOTS)->g;
-			dots[i][j][2] = colors->at(DOTS)->b;
-
-            int ii = i % 8;
-            int jj = j % 8;
-
-			if ((ii == 0 || ii == 1 || ii == 2)
-                && (jj == 0 || jj == 1 || jj == 2)) {
-				dots[i][j][3] = trans;
-			} else {
-				dots[i][j][3] = 0;
-			}	
-		}
-	}
-
-    // slantstripes
-    for (int i = 0; i < TEX_SIZE; i++) {
-        for (int j = 0; j < TEX_SIZE; j++) {		
-			unevendots[i][j][0] = colors->at(SLANTA)->r;
-			unevendots[i][j][1] = colors->at(SLANTA)->g;
-			unevendots[i][j][2] = colors->at(SLANTA)->b;
-
-            int ii = i % 4;
-            int jj = j % 4;
-
-            if (ii == jj) {
-				unevendots[i][j][3] = trans;
-			} else {
-				unevendots[i][j][3] = 0;
-			}	
-		}
-	}
-
-    // slantstripes
+    // solidA
     for (int i = 0; i < TEX_SIZE; i++) {
         for (int j = 0; j < TEX_SIZE; j++) {
 		    solidA[i][j][0] = colors->at(SOLIDA)->r;
@@ -76,9 +38,9 @@ void Textures::init() {
     // slantstripes
     for (int i = 0; i < TEX_SIZE; i++) {
         for (int j = 0; j < TEX_SIZE; j++) {
-		    slantstripes[i][j][0] = colors->at(SLANTB)->r;
-			slantstripes[i][j][1] = colors->at(SLANTB)->g;
-			slantstripes[i][j][2] = colors->at(SLANTB)->b;
+		    slantstripes[i][j][0] = colors->at(SLANT)->r;
+			slantstripes[i][j][1] = colors->at(SLANT)->g;
+			slantstripes[i][j][2] = colors->at(SLANT)->b;
 
             int ii = i % 4;
             int jj = j % 4;
@@ -111,7 +73,7 @@ void Textures::init() {
 		}
 	}
 
-    // stripes
+    // solidB
     for (int i = 0; i < TEX_SIZE; i++) {
         for (int j = 0; j < TEX_SIZE; j++) {
 		    solidB[i][j][0] = colors->at(SOLIDB)->r;
@@ -121,27 +83,11 @@ void Textures::init() {
 		}
 	}
 
-	glGenTextures(6, textures);
+	glGenTextures(5, textures);
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	glEnable(GL_TEXTURE_2D);
-
-	glBindTexture(GL_TEXTURE_2D, textures[DOTS]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, dots);
-
-    glBindTexture(GL_TEXTURE_2D, textures[SLANTA]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, unevendots);
 
     glBindTexture(GL_TEXTURE_2D, textures[SOLIDA]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -151,7 +97,7 @@ void Textures::init() {
 	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TEX_SIZE, TEX_SIZE, 0, GL_RGBA, GL_UNSIGNED_BYTE, solidA);
 
-	glBindTexture(GL_TEXTURE_2D, textures[SLANTB]);
+	glBindTexture(GL_TEXTURE_2D, textures[SLANT]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_BLEND); //GL_BLEND

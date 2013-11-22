@@ -25,18 +25,18 @@ Experiment::Experiment(std::string participant) {
     taskSlope = new SlopeTask(dataSet);
 
     tasks = new std::vector<Task *>();
-    tasks->push_back(taskMax);
-    tasks->push_back(taskDisc);
+    //tasks->push_back(taskDisc);
     tasks->push_back(taskSlope);
+    tasks->push_back(taskMax);
 
     stacked = new StackedChart();
     hg = new HorizonGraph();
     line = new LineChart();
 
     chartTypes = new std::vector<Chart *>();
-    chartTypes->push_back(line);
     chartTypes->push_back(stacked);
     chartTypes->push_back(hg);
+    chartTypes->push_back(line);
 
     nTrials = 10;
     nTasks = tasks->size();
