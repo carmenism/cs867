@@ -2,6 +2,7 @@
 #include "Color.h"
 #include "Textures.h"
 #include "PickColor.h"
+#include "Material.h"
 #include "GL/glut.h"
 
 StackedChart::StackedChart() 
@@ -28,7 +29,7 @@ void StackedChart::drawAtOrigin(std::vector<float> *values) {
     float scale = 0.03;
     
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 4]);
+    glBindTexture(GL_TEXTURE_2D, textures->textures[index ]);
 
     for (int time = 0; time < values->size(); time++) {
         float value = values->at(time);
@@ -104,7 +105,8 @@ float StackedChart::calculateHeight(float fullHeight, int numberCharts) {
 
 void StackedChart::drawButton(float x, float y) {
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textures->textures[index % 4]);
+    glBindTexture(GL_TEXTURE_2D, textures->textures[index ]);
+    
     glColor3f(1,1,1);
     glPolygonMode(GL_FRONT, GL_FILL);  
     float scale = 0.03;

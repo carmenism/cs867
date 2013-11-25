@@ -25,6 +25,8 @@ Color::Color( float red, float green, float blue, float alpha ) {
     g = green;
     b = blue;
     a = alpha;
+
+    arr = new float[4]();
 }
 
 Color::Color( const Color& col ) {
@@ -32,4 +34,15 @@ Color::Color( const Color& col ) {
     g = col.g;
     b = col.b;
     a = col.a;
+
+    arr = new float[4]();
+}
+
+float * Color::getFloatArray() {
+    arr[0] = r;
+    arr[1] = g;
+    arr[2] = b;
+    arr[3] = a;
+
+    return arr;
 }
