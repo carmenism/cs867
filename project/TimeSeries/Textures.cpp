@@ -43,15 +43,14 @@ void Textures::makeTexture(int index) {
     int i = index % 4;
 
     if (i == 0 || i == 2) {
-        makeSolid(solidA, color, transSolid);
-        registerTexture(solidA, index);
+        makeSolid(grid, color, transSolid);
     } else if (i == 1) {
-        makeStripes(stripes, color, trans);
-        registerTexture(stripes, index);
+        makeStripes(grid, color, trans);
     } else {
-        makeSlantedStripes(slantstripes, color, trans);
-        registerTexture(slantstripes, index);
+        makeSlantedStripes(grid, color, trans);
     }
+   
+    registerTexture(grid, index);
 }
 
 void Textures::registerTexture(unsigned char arr[TEX_SIZE][TEX_SIZE][4], int index) {

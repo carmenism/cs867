@@ -2,7 +2,6 @@
 #include "Color.h"
 #include "Textures.h"
 #include "PickColor.h"
-#include "Material.h"
 #include "GL/glut.h"
 
 StackedChart::StackedChart() 

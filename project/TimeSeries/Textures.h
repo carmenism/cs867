@@ -21,9 +21,7 @@ public:
 
     PickColor *getColor(int i);
 private:
-	unsigned char stripes[TEX_SIZE][TEX_SIZE][4];
-	unsigned char solidA[TEX_SIZE][TEX_SIZE][4];
-	unsigned char slantstripes[TEX_SIZE][TEX_SIZE][4];
+	unsigned char grid[TEX_SIZE][TEX_SIZE][4];
 
     void init();
 
