@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{url}
+
+\usepackage{amsmath}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\renewcommand\refname{7  \hspace{4 mm}References}
+
+\begin{document}
+
+\title{CS 867: Effectively Displaying Multiple Time Series}
+\date{December 1, 2013}
+\author{Carmen St.\ Jean}
+
+\maketitle
+
+\section{Introduction}
+
+Time-oriented data might be one of the most common forms of data, used in numerous fields such as medicine, economics, ecology, engineering, and meteorology.  Typically, time series are visualized using line charts, which appear frequently in newspapers, textbooks, and academic papers.  However, it can be difficult to display many concurrent time series at once in an understandable manner using a line chart.  Therefore, we have introduced a new visualization technique called a stack graph, which we propose may be suitable for showing many time series---i.e., fifteen---at once.  To test the merits of our creation, we have evaluated the stacked graph against two existing methods---small multiples and horizon graphs.
+
+\section{Background}
+
+Since it was first introduced by William Playfair in 1786 \cite{playfair1786}, the line chart has been a popular choice for displaying temporal data.  However, it has its limitations when it comes to multiple time series.  To be plotted on a single chart, each time series must be distinctly colored and/or patterned; as the number of time series increases, it becomes more difficult to make each series visually distinct.
+
+% paragraph about javed et al
