@@ -7,7 +7,7 @@
 \usepackage{amsmath}
 
 \newcommand{\code}[1]{\texttt{#1}}
-\renewcommand\refname{7  \hspace{4 mm}References}
+\renewcommand\refname{5  \hspace{4 mm}References}
 
 \begin{document}
 
@@ -87,9 +87,11 @@ Javed et al.\ evaluated these four techniques illustrated in Figure~\ref{fig:ts_
 \end{enumerate}
 In addition to chart type, their study varied the number of time series (2, 4, and 8) and the total chart height (48, 96, and 192 pixels).  They found that the simple line chart and the braided graph were best suited for the maximum task, while the small multiples and horizon graphs were better for the slope and discrimination tasks.  In general, they concluded that simple line charts and small multiples were generally more robust than horizon graphs and their newly introduced braided graphs. Additionally, they found that decreases in chart size did not affect completion time, but did decrease accuracy.  Lastly, as the number of concurrent time series increased, accuracy decreased and completion time increased. 
 
-\section{Approach}
+\section{Method}
 
 Javed et al.'s approach considered only eight concurrent time series at most, when it is not unusual for many more to appear together in practice.  Therefore, we determined to conduct a similar study but with fifteen concurrent time series.  This number of time series makes simple line charts impractical, so they were not included in our evaluation.  Additionally, we decided to exclude braided graphs because they did not prove to be particularly effective in Javed et al.'s evaluation.  Instead, we have introduced stack graphs, illustrated in Figure~\ref{fig:stackedGraph}, to compare with small multiples and line graphs.  
+
+\subsection{Design}
 
 \begin{figure}[h]
 	\centering
@@ -109,13 +111,15 @@ Stack graphs are called so because each time series is vertically-offset from th
 
 We have also proposed a different color scheme for the horizon graph, shown in Figure~\ref{fig:newHorizon}, because it can be difficult to remember the meaning of the traditional colors.  If one thinks of a temperature color scale, then red is associated with higher values and blue with lower values, which is the opposite of their intended meanings for horizon graphs.  Users already require instruction and practice to interpret the bands properly, so it would be helpful for them if the colors were less ambiguous.  Therefore, we have replaced blue with green, shown in Figure~\ref{fig:newHorizon}, so that perhaps users will be reminded of the usual financial meanings for these colors: green for above some threshold and red for below it.
 
+The tasks from Javed et al.'s study where used in our experiment, except for the discrimination task \cite{javed2010}.  This was omitted because it seemed unrelated to how time series are read in reality.  Typically, users are concerned with how time series compare at the same point in time or across the same time range.  The discrimination task asked users to compare time series at different times, which we felt was unusual.
+
 \subsection{Display}
 
 All experimentation was conducted on a standard Dell desktop computer with a 20-inch monitor set to 1280 by 1024 pixels resolution.  The portion of the display where the time series were drawn occupied 500 by 515 pixels (approximately 5 by 5.25 inches).  Participants sat so their eyes were approximately 18 inches from the screen.
 
 \subsection{Procedure}
 
-The evaluation consisted of ten trials for each task on each visualization type.  This made for a total of 60 trials per participant.  A trial showed fifteen time series, from which the user selected an answer.  Each time series had a small box drawn next to it, as shown in Figure~\ref{fig:stackedGraph}, which the participant clicked to submit a response.  Response times and correctness of response were recorded.
+The evaluation consisted of blocks of ten trials, one for each task with each visualization type.  This made for a total of 60 trials per participant.  A trial showed fifteen time series, from which the user selected an answer.  Each time series had a small box drawn next to it, as shown in Figure~\ref{fig:stackedGraph}, which the participant clicked to submit a response.  Response times and correctness of response were recorded.
 
 \subsection{Tasks}
 
@@ -125,11 +129,9 @@ Both tasks involved selecting one time series out of set of fifteen.  The two ta
 \item \textbf{Slope:} Two times were marked on all time series.  The user was instructed to identify the time series which increased the most from the first marked time to the second marked time.  As with the maximum task, these times were randomly chosen so that they were no closer than 10\% from the beginning or the end of the chart.  Furthermore, the distance between the two times was designed to be at least 25\% the width of the chart.
 \end{enumerate}
 
-The discrimination task from the Javed et al. study \cite{javed2010} was omitted because it seemed unrelated to ways which time series are read in reality.  Typically, users are concerned with how time series compare at the same point in time or across the same time range, not different times unique to each series.
-
 \subsection{Conditions}
 
-The condition that varied in our study was the visualization type.  Our fifteen time series were represented in one of the following ways:
+The only condition that varied in our study was the visualization type.  Our fifteen time series were represented in one of the following ways:
 
 \begin{itemize}
 \item \textbf{Small multiples:} one line chart per time series, with the area between the values and the $x$-axis filled. The same $y$-axis scale was used across all charts.  Each chart was 500 by 26 pixels.
@@ -140,6 +142,10 @@ The condition that varied in our study was the visualization type.  Our fifteen 
 \subsection{Subjects}
 
 Four volunteers were used as subjects.  All four were graduate students in Computer Science at the University of New Hampshire.  Their vision was either 20-20 vision or corrected to 20-20 with glasses.
+
+\section{Results}
+
+\section{Discussion}
 
 \bibliographystyle{plain}
 
