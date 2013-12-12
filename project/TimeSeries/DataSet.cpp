@@ -49,7 +49,7 @@ void DataSet::updateValues() {
     globalMaxY = -10000;
 
     for (int i = 0; i < numberCharts; i++) {
-        std::vector<float> *values = walk->generate(numberTimeSteps, 20 + rand() % 40);
+        std::vector<float> *values = walk->generate(numberTimeSteps, 200 + rand() % 40);
         allValues->push_back(values);
 
         for (int time = 0; time < values->size(); time++) {

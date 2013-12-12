@@ -36,14 +36,14 @@ void ChartSet::draw(std::vector<TimeMark *> *timeMarks) {
         currentChart->setIndex(chart);
         currentChart->draw(dataSet->getValues(chart), x, getChartYLocation(chart));
     }
-
+/*
     for (int tm = 0; tm < timeMarks->size(); tm++) {
         TimeMark *timeMark = timeMarks->at(tm);
         int chart = timeMark->getChart();
         int time = timeMark->getTime();
 
         currentChart->drawLine(x, getChartYLocation(chart), time, chart);
-    }
+    }*/
 }
 
 int ChartSet::getChartYLocation(int chartIndex) {

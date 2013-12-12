@@ -92,7 +92,7 @@ void keyboard(unsigned char key, int x, int y) {
 }
 
 int main(int argc, char *argv[]) {  
-	winWid = 900.0;
+	winWid = 1100.0;
 	winHeight = 700.0;
 
 	glutInit(&argc, argv);
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    experiment = new Experiment("Participant Name");
+    experiment = new Experiment("Chris");
     experiment->startTrial();
 
     picker = new Picker(experiment);
