@@ -6,6 +6,8 @@
 
 \usepackage{amsmath}
 
+\setcounter{section}{-1}
+
 \newcommand{\code}[1]{\texttt{#1}}
 \renewcommand\refname{5  \hspace{4 mm}References}
 
@@ -16,6 +18,10 @@
 \author{Carmen St.\ Jean}
 
 \maketitle
+
+\section{Abstract}
+
+Displaying many time series at once in an understandable manner can be difficult, especially if the total screen space available is limited.  We introduce a new technique called the stacked graph, where the time series are horizontally aligned, but each time series starts at one-fourth up the height of the previous series.  Combined with semi-transparent colors and textures, this makes for time series which are easily distinguished from each other and, more importantly, have more vertical resolution without increasing overall screen space.  Our evaluation compared this technique with small multiples and horizon graphs, which showed that the stacked graph requires more research before being recommended for use.
 
 \section{Introduction}
 
