@@ -23,7 +23,7 @@ Time-oriented data might be one of the most common forms of data, used in numero
 
 \subsection{Background}
 
-Since it was first introduced by William Playfair in 1786 \cite{playfair1786}, the line chart has been a popular choice for displaying temporal data.  However, it has its limitations when it comes to multiple time series.  To be plotted on a single chart, each time series must be distinctly colored and/or patterned; as the number of time series increases, it becomes more difficult to make each series visually distinct.  Even if each time series are designed uniquely, it may be difficult to distinguish two time series which have similar vales and overlap frequently.
+Since it was first introduced by William Playfair in 1786 \cite{playfair1786}, the line chart has been a popular choice for displaying temporal data.  However, it has its limitations when it comes to multiple time series.  To be plotted on a single chart, each time series must be distinctly colored and/or patterned; as the number of time series increases, it becomes more difficult to make each series visually distinct.  Even if each time series is designed uniquely, it may be difficult to distinguish two time series which have similar values and overlap frequently.
 
 \begin{figure}
         \centering
@@ -81,9 +81,9 @@ Saito et al.\ designed horizon graphs to increase the amount of data that can be
 
 Javed et al.\ evaluated these four techniques illustrated in Figure~\ref{fig:ts_compare} by having participants complete three tasks on randomly-generated data:
 \begin{enumerate}
-	\item \textbf{Maximum:} for a given time point, identify the time series with the highest value
-	\item \textbf{Slope:} for the entire time period, find the time series with the highest increase
-	\item \textbf{Discrimination:} at a time point specific to each series, determine which series has the highest values
+	\item \textbf{Maximum:} for a given time point, identify the time series with the highest value.
+	\item \textbf{Slope:} for the entire time period, find the time series with the highest increase.
+	\item \textbf{Discrimination:} at a time point specific to each series, determine which series has the highest value.
 \end{enumerate}
 In addition to chart type, their study varied the number of time series (2, 4, and 8) and the total chart height (48, 96, and 192 pixels).  They found that the simple line chart and the braided graph were best suited for the maximum task, while the small multiples and horizon graphs were better for the slope and discrimination tasks.  In general, they concluded that simple line charts and small multiples were generally more robust than horizon graphs and their newly introduced braided graphs. Additionally, they found that decreases in chart size did not affect completion time, but did decrease accuracy.  Lastly, as the number of concurrent time series increased, accuracy decreased and completion time increased. 
 
@@ -100,7 +100,7 @@ Javed et al.'s approach considered only eight concurrent time series at most, wh
 	\label{fig:stackedGraph}
 \end{figure}
 
-Stacked graphs are called so because each time series is vertically-offset from the preceding time series, resulting in a stacked appearance.  An $x$-axis and a $y$-axis are drawn for each chart, though the latter is aligned for all charts.  We chose to use an offset of one-fourth of the individual chart height, which means that, at any point, a chart may overlap three other charts.  Therefore, we chose to fill the areas under each time series with semi-transparent, alternating colors and textures that were designed to have maximum see-through.  Our textures are solid, striped, and slanted stripes, while our colors are red, green, blue, and black. The purpose of the stacked graph is to increase the amount of space each chart occupies without increasing space overall.
+Stacked graphs are called so because each time series is vertically-offset from the preceding time series, resulting in a stacked appearance.  An $x$-axis and a $y$-axis are drawn for each chart, though the latter is aligned for all charts.  We chose to use an offset of one-fourth of the individual chart height, which means that, at any point, a chart may overlap three other charts.  Therefore, we chose to fill the areas under each time series with semi-transparent, alternating colors and textures that were designed to have maximum see-through.  Our textures are solid, striped, and slanted stripes, while our colors are red, green, blue, and black. The purpose of the stacked graph is to increase the amount of space each chart occupies without increasing the overall space that all time series occupy.
 
 \begin{figure}[h]
 	\centering
@@ -115,7 +115,7 @@ The tasks from Javed et al.'s study where used in our experiment, except for the
 
 \subsection{Display}
 
-All experimentation was conducted on a standard Dell desktop computer with a 20-inch monitor set to 1280 by 1024 pixels resolution.  The portion of the display where the time series were drawn occupied 500 by 515 pixels (approximately 5 by 5.25 inches).  Participants sat so their eyes were approximately 18 inches from the screen.
+All experimentation was conducted on a standard Dell desktop computer with a 20-inch monitor set to 1280 by 1024 pixels resolution.  The portion of the display where the time series were drawn occupied 500 by 515 pixels (approximately 5 by 5.25 inches); the rest of the display was colored white.  Participants sat so their eyes were approximately 18 inches from the screen.
 
 \subsection{Procedure}
 
@@ -123,7 +123,7 @@ The evaluation consisted of blocks of ten trials, one for each task with each vi
 
 \subsection{Tasks}
 
-Both tasks involved selecting one time series out of set of fifteen.  The two tasks used were based on the tasks by Javed et al. \cite{javed2010}:
+Both tasks involved selecting one time series out of a set of fifteen.  The two tasks used were based on the tasks by Javed et al. \cite{javed2010}:
 \begin{enumerate}
 \item \textbf{Maximum:} We asked the user to identify the time series with the highest value at a given point in time that was marked on all time series.  The time was randomly chosen for each trial so it was no closer than 10\% from the beginning or end of the chart.
 \item \textbf{Slope:} Two times were marked on all time series.  The user was instructed to identify the time series which increased the most from the first marked time to the second marked time.  As with the maximum task, these times were randomly chosen so that they were no closer than 10\% from the beginning or the end of the chart.  Furthermore, the distance between the two times was designed to be at least 25\% the width of the chart.
