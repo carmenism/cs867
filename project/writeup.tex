@@ -19,7 +19,7 @@
 
 \section{Introduction}
 
-Time-oriented data might be one of the most common forms of data, used in numerous fields such as medicine, economics, ecology, engineering, and meteorology.  Typically, time series are visualized using line charts, which appear frequently in newspapers, textbooks, and academic papers.  However, it can be difficult to display many concurrent time series at once in an understandable manner using a line chart.  Therefore, we have introduced a new visualization technique called a stack graph, which we propose may be suitable for showing many time series---i.e., fifteen---at once.  To test the merits of our creation, we have evaluated the stacked graph against two existing methods---small multiples and horizon graphs.
+Time-oriented data might be one of the most common forms of data, used in numerous fields such as medicine, economics, ecology, engineering, and meteorology.  Typically, time series are visualized using line charts, which appear frequently in newspapers, textbooks, and academic papers.  However, it can be difficult to display many concurrent time series at once in an understandable manner using a line chart.  Therefore, we have introduced a new visualization technique called a stacked graph, which we propose may be suitable for showing many time series---i.e., fifteen---at once.  To test the merits of our creation, we have evaluated the stacked graph against two existing methods---small multiples and horizon graphs.
 
 \subsection{Background}
 
@@ -89,18 +89,18 @@ In addition to chart type, their study varied the number of time series (2, 4, a
 
 \section{Method}
 
-Javed et al.'s approach considered only eight concurrent time series at most, when it is not unusual for many more to appear together in practice.  Therefore, we determined to conduct a similar study but with fifteen concurrent time series.  This number of time series makes simple line charts impractical, so they were not included in our evaluation.  Additionally, we decided to exclude braided graphs because they did not prove to be particularly effective in Javed et al.'s evaluation.  Instead, we have introduced stack graphs, illustrated in Figure~\ref{fig:stackedGraph}, to compare with small multiples and line graphs.  
+Javed et al.'s approach considered only eight concurrent time series at most, when it is not unusual for many more to appear together in practice.  Therefore, we determined to conduct a similar study but with fifteen concurrent time series.  This number of time series makes simple line charts impractical, so they were not included in our evaluation.  Additionally, we decided to exclude braided graphs because they did not prove to be particularly effective in Javed et al.'s evaluation.  Instead, we have introduced stacked graphs, illustrated in Figure~\ref{fig:stackedGraph}, to compare with small multiples and line graphs, using data generated from a random walk.  We hypothesize that the stacked graph will prove to be a strong alternative for displaying many time series.
 
 \subsection{Design}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=6.5cm]{figures/stacked-new.eps}
-	\caption{Fifteen time series represented with stack graphs.}
+	\caption{Fifteen time series represented with stacked graphs.}
 	\label{fig:stackedGraph}
 \end{figure}
 
-Stack graphs are called so because each time series is vertically-offset from the preceding time series, resulting in a stacked appearance.  An $x$-axis and a $y$-axis are drawn for each chart, though the latter is aligned for all charts.  We chose to use an offset of one-fourth of the individial chart height, which means that, at any point, a chart may overlap three other charts.  Therefore, we chose to fill the areas under each time series with semi-transparent, alternating colors and textures that were designed to have maximum see-through.  Our textures are solid, striped, and slanted stripes, while our colors are red, green, blue, and black. The purpose of the stacked graph is to increase the amount of space each chart occupies without increasing space overall.
+Stacked graphs are called so because each time series is vertically-offset from the preceding time series, resulting in a stacked appearance.  An $x$-axis and a $y$-axis are drawn for each chart, though the latter is aligned for all charts.  We chose to use an offset of one-fourth of the individual chart height, which means that, at any point, a chart may overlap three other charts.  Therefore, we chose to fill the areas under each time series with semi-transparent, alternating colors and textures that were designed to have maximum see-through.  Our textures are solid, striped, and slanted stripes, while our colors are red, green, blue, and black. The purpose of the stacked graph is to increase the amount of space each chart occupies without increasing space overall.
 
 \begin{figure}[h]
 	\centering
@@ -136,7 +136,7 @@ The only condition that varied in our study was the visualization type.  Our fif
 \begin{itemize}
 \item \textbf{Small multiples:} one line chart per time series, with the area between the values and the $x$-axis filled. The same $y$-axis scale was used across all charts.  Each chart was 500 by 26 pixels.
 \item \textbf{Horizon graphs:} one three-band horizon graph per time series using the red-green color scheme.  The baseline was set to the average of the global minimum and global maximum values of all time series.  The same $y$-axis scale was used across all charts.  Each chart was 500 by 26 pixels.
-\item \textbf{Stack graphs:}  one semi-transparent line chart per time series, with the area between the values and the $x$-axis filled with a texture. Each chart starts at one-fourth up the height of the previous chart. The same $y$-axis scale was used across all charts.  Each chart was 500 by 115 pixels.
+\item \textbf{Stacked graphs:}  one semi-transparent line chart per time series, with the area between the values and the $x$-axis filled with a texture. Each chart starts at one-fourth up the height of the previous chart. The same $y$-axis scale was used across all charts.  Each chart was 500 by 115 pixels.
 \end{itemize}
 
 \subsection{Subjects}
@@ -182,13 +182,19 @@ Four volunteers were used as subjects.  All four were graduate students in Compu
 	\label{tab:results}
 \end{figure}
 
+The results of our evaluation are shown in tabular form in Figure~\ref{tab:results} and as charts in Figure~\ref{fig:results}.  We have recorded and calculated the mean response time and percent error; smaller values are desired for both.  The results show that the slope task seems to have been much more difficult than the maximum task for all three chart types since the times approximately doubled from the maximum task.  Small multiples seem to have been slightly better suited to the slope task, but the mean response times and errors were fairly similar across the different chart types.  Horizon graphs led to slightly lower errors than small multiples for the maximum task, though they were fairly equivalent and both were much better than stack graphs in terms of time and error.  For both tasks, the stacked charts proved to have high errors and high response times.
+
+\section{Discussion}
+
+There were only slight differences between the chart types for the slope task, but the stacked graph proved to be inefficient for the maximum task, attaining an error---0.65---over four times as a high as the other chart types.  Furthermore, response times were approximately three times higher for the stacked graph with the maximum task, meaning participants took longer to reach the wrong answer for the stacked graph.  This matches with the commentary provided by the different participants following completion of the evaluation; the stacked graphs were described as ``confusing'' and ``a mess.''
+
 \begin{figure}
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{figures/results-error.eps}
 		\caption{The percent error (out of 1.0).}
 		\label{fig:resultsError}
         \end{subfigure}
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{figures/results-time.eps}
 		\caption{Mean response time (seconds).}
 		\label{fig:resultsTime}
@@ -197,7 +203,19 @@ Four volunteers were used as subjects.  All four were graduate students in Compu
 	\label{fig:results}
 \end{figure}
 
-\section{Discussion}
+These results seem to show that the stacked graph is inferior to the horizon graph and small multiples and should, therefore, be avoided when plotting many concurrent time series.  While this may be true, it could also be possible that our implementation was suboptimal.  In the design phase, we incrementally attempted to improve the colors and textures used for the stacked graphs.  However, there may be other color and texture combinations that would lead to a better performance.  Also, it is possible that a different vertical offset could lead to better results.
+
+There were major differences between the two tasks---maximum task and slope task---for the small multiples and horizon graphs.  Both chart types had reasonably low errors and response times for the maximum task, but much higher errors and times for the slope task.  There could be a number of possible explanations for this---e.g., none of these chart types are suited to this task, the task is too complicated with fifteen time series at once, or the task was improperly explained to participants.  More research would be required to determine the reason for the overall difficulty with the slope task.
+
+\subsection{Conclusion}
+
+Our study disproved our hypothesis unfortunately; for these tasks, the stacked graph seemed to be inefficient and, worse, misleading for representing many time series.  Small multiples or horizon graphs were much better for the two tasks involved and seemed to be fairly equivalent to each other.  When representing several concurrent time series, we recommend using either small multiples or horizon graphs.  Adjustments to the coloring and texturing of the stacked graph may lead to improvements, though these changes should be evaluated before being used in practice.
+
+\subsection{Future Work}
+
+There are many different combinations of color and texture possible for use with a stacked graph, some of which might lead to improvements.  Furthermore, additional techniques such as fading opacity could be used to enhance the stacked graph's appearance.
+
+Our idea to use a red-green color scheme for the horizon graph leads to the question: what color scheme is best for the understandability of the horizon graph?  Previous evaluations on the horizon graph have focused on the overall size of the chart or the number of overlapping bands; perhaps it might be useful to evaluate different color schemes for the horizon graph.
 
 \bibliographystyle{plain}
 
